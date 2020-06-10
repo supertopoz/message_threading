@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="KGk-i7-Jjw" customClass="ParentMessTableViewCell" customModule="message_threading" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="122"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-JZ-l77" userLabel="Message Details">
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="122"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message id: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfa-Hj-rmq">
+                                <rect key="frame" x="8" y="6" width="55.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qTy-Sf-ZJD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-Qw-KqU">
+                                <rect key="frame" x="8" y="34" width="69" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="YdX-S7-Pxr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="0SM-nV-Dml"/>
+                            <constraint firstItem="kfa-Hj-rmq" firstAttribute="leading" secondItem="dVx-JZ-l77" secondAttribute="leading" constant="8" id="6WN-3b-V0B"/>
+                            <constraint firstAttribute="height" constant="122" id="Ix2-Ta-JiB"/>
+                            <constraint firstItem="QSa-Qw-KqU" firstAttribute="top" secondItem="kfa-Hj-rmq" secondAttribute="bottom" constant="7" id="JbQ-U1-ol1"/>
+                            <constraint firstItem="kfa-Hj-rmq" firstAttribute="top" secondItem="dVx-JZ-l77" secondAttribute="top" constant="6" id="bZg-Vw-tpt"/>
+                            <constraint firstItem="QSa-Qw-KqU" firstAttribute="leading" secondItem="dVx-JZ-l77" secondAttribute="leading" constant="8" id="zKc-3l-Fsw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dVx-JZ-l77" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GXb-kP-be0"/>
+                    <constraint firstAttribute="trailing" secondItem="dVx-JZ-l77" secondAttribute="trailing" id="pTJ-nz-Hpn"/>
+                    <constraint firstItem="dVx-JZ-l77" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sL9-vz-IWS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="messageIdLabel" destination="kfa-Hj-rmq" id="vGL-gk-w1K"/>
+                <outlet property="messageMessageLabel" destination="QSa-Qw-KqU" id="an8-Ig-g6v"/>
+            </connections>
+            <point key="canvasLocation" x="339.85507246376812" y="-32.8125"/>
+        </tableViewCell>
+    </objects>
+</document>
