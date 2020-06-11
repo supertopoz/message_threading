@@ -12,10 +12,12 @@ class ParentMessTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageIdLabel: UILabel!
     @IBOutlet weak var messageMessageLabel: UILabel!
+    @IBOutlet weak var messageHolderView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        messageHolderView.layer.cornerRadius = 15
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -17,31 +17,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var parentMessages: UITableView!
     var currentChannel: SBDOpenChannel? = nil
     var parentMessageStore: [SBDBaseMessage]? = []
+    
     override func viewDidLoad() {
-        
-
-        
-        
         super.viewDidLoad()
         let nib = UINib(nibName: "ParentMessTableViewCell", bundle: nil)
         parentMessages.register(nib, forCellReuseIdentifier: "ParentMessages")
-        // Do any additional setup after loading the view.\
         SBDMain.connect(withUserId: "User1", completionHandler: { (user, error) in
-            guard error == nil else {   // Error.
-                return
-            }
-            print(user)
+            guard error == nil else { return }
             let channelUrl = "sendbird_open_channel_1268_27d2758cf4d381f6dc2df14e4b228bea50f1084b"
             SBDOpenChannel.getWithUrl(channelUrl) { (channel, error) in
-                guard error == nil else {
-                    print(error)
-                    return
-                }
-            
+                guard error == nil else { return }
                 self.currentChannel = channel
-                print(channel)
             }
         })
+        parentMessages.estimatedRowHeight = 200
+        parentMessages.rowHeight = UITableView.automaticDimension
+        parentMessages.separatorColor = .clear
+        parentMessages.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+        parentMessages.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: parentMessages.bounds.size.width - 8.0)
+        
     }
     
     @IBAction func getMessages(_ sender: Any) {
@@ -75,6 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
        
         }
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         
         return cell
     }
