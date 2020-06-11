@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A928178524886067002B3528 /* ParentMessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928178324886067002B3528 /* ParentMessTableViewCell.swift */; };
 		A928178624886067002B3528 /* ParentMessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A928178424886067002B3528 /* ParentMessTableViewCell.xib */; };
+		A9C384FE2492DEC300EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */; };
 		A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE10972488473E00C661B9 /* AppDelegate.swift */; };
 		A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE10992488473E00C661B9 /* SceneDelegate.swift */; };
 		A9CE109C2488473E00C661B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE109B2488473E00C661B9 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_message_threading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A928178324886067002B3528 /* ParentMessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentMessTableViewCell.swift; sourceTree = "<group>"; };
 		A928178424886067002B3528 /* ParentMessTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParentMessTableViewCell.xib; sourceTree = "<group>"; };
+		A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		A9CE10942488473E00C661B9 /* message_threading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = message_threading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CE10972488473E00C661B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CE10992488473E00C661B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				A9CE10A52488474000C661B9 /* Info.plist */,
 				A928178324886067002B3528 /* ParentMessTableViewCell.swift */,
 				A928178424886067002B3528 /* ParentMessTableViewCell.xib */,
+				A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */,
 			);
 			path = message_threading;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CE109C2488473E00C661B9 /* ViewController.swift in Sources */,
+				A9C384FE2492DEC300EE5865 /* KeyboardExtension.swift in Sources */,
 				A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */,
 				A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */,
 				A928178524886067002B3528 /* ParentMessTableViewCell.swift in Sources */,

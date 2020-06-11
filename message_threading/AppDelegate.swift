@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        SBDMain.initWithApplicationId("0491C373-8B11-4F1C-99EB-31AC6CC45161")
+        SBDMain.initWithApplicationId("D70D1F08-9EEB-4C33-82B6-639E6D652564")
         return true
     }
 

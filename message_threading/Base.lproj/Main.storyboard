@@ -33,6 +33,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="IAl-ny-2vB"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lr-yS-Pfy">
+                                <rect key="frame" x="20" y="596" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="aHF-bA-U8z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -40,11 +48,15 @@
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="P5C-14-ikW"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="anB-J7-EEr"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="leading" secondItem="56f-0V-e6d" secondAttribute="leading" id="blz-73-uIK"/>
+                            <constraint firstItem="1lr-yS-Pfy" firstAttribute="top" secondItem="jrl-MI-jBW" secondAttribute="bottom" constant="23" id="ecX-dg-RNK"/>
+                            <constraint firstItem="1lr-yS-Pfy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fty-0g-Qpp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1lr-yS-Pfy" secondAttribute="trailing" constant="20" id="hUk-RH-40X"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="l6R-hA-4LN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="messageInputField" destination="1lr-yS-Pfy" id="un1-hO-EWQ"/>
                         <outlet property="parentMessages" destination="jrl-MI-jBW" id="TL2-rn-X6K"/>
                     </connections>
                 </viewController>
