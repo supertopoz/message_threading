@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		A928178524886067002B3528 /* ParentMessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928178324886067002B3528 /* ParentMessTableViewCell.swift */; };
 		A928178624886067002B3528 /* ParentMessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A928178424886067002B3528 /* ParentMessTableViewCell.xib */; };
-		A9C384FE2492DEC300EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */; };
+		A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385002492EDB000EE5865 /* KeyboardExtension.swift */; };
+		A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385042492EF3600EE5865 /* TableViewExtention.swift */; };
+		A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */; };
 		A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE10972488473E00C661B9 /* AppDelegate.swift */; };
 		A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE10992488473E00C661B9 /* SceneDelegate.swift */; };
-		A9CE109C2488473E00C661B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE109B2488473E00C661B9 /* ViewController.swift */; };
+		A9CE109C2488473E00C661B9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE109B2488473E00C661B9 /* ChatViewController.swift */; };
 		A9CE109F2488473E00C661B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CE109D2488473E00C661B9 /* Main.storyboard */; };
 		A9CE10A12488474000C661B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CE10A02488474000C661B9 /* Assets.xcassets */; };
 		A9CE10A42488474000C661B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CE10A22488474000C661B9 /* LaunchScreen.storyboard */; };
@@ -23,11 +25,13 @@
 		36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_message_threading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A928178324886067002B3528 /* ParentMessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentMessTableViewCell.swift; sourceTree = "<group>"; };
 		A928178424886067002B3528 /* ParentMessTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParentMessTableViewCell.xib; sourceTree = "<group>"; };
-		A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		A9C385002492EDB000EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		A9C385042492EF3600EE5865 /* TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtention.swift; sourceTree = "<group>"; };
+		A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToSendBirdExtension.swift; sourceTree = "<group>"; };
 		A9CE10942488473E00C661B9 /* message_threading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = message_threading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CE10972488473E00C661B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CE10992488473E00C661B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A9CE109B2488473E00C661B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9CE109B2488473E00C661B9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A9CE109E2488473E00C661B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9CE10A02488474000C661B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9CE10A32488474000C661B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +69,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A9C385022492EEE800EE5865 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9C385032492EF0300EE5865 /* ChatViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A9C385032492EF0300EE5865 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE109B2488473E00C661B9 /* ChatViewController.swift */,
+				A9C385002492EDB000EE5865 /* KeyboardExtension.swift */,
+				A9C385042492EF3600EE5865 /* TableViewExtention.swift */,
+				A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */,
+			);
+			path = ChatViewController;
+			sourceTree = "<group>";
+		};
 		A9CE108B2488473E00C661B9 = {
 			isa = PBXGroup;
 			children = (
@@ -86,16 +109,15 @@
 		A9CE10962488473E00C661B9 /* message_threading */ = {
 			isa = PBXGroup;
 			children = (
+				A9C385022492EEE800EE5865 /* ViewControllers */,
 				A9CE10972488473E00C661B9 /* AppDelegate.swift */,
 				A9CE10992488473E00C661B9 /* SceneDelegate.swift */,
-				A9CE109B2488473E00C661B9 /* ViewController.swift */,
 				A9CE109D2488473E00C661B9 /* Main.storyboard */,
 				A9CE10A02488474000C661B9 /* Assets.xcassets */,
 				A9CE10A22488474000C661B9 /* LaunchScreen.storyboard */,
 				A9CE10A52488474000C661B9 /* Info.plist */,
 				A928178324886067002B3528 /* ParentMessTableViewCell.swift */,
 				A928178424886067002B3528 /* ParentMessTableViewCell.xib */,
-				A9C384FD2492DEC300EE5865 /* KeyboardExtension.swift */,
 			);
 			path = message_threading;
 			sourceTree = "<group>";
@@ -216,10 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9CE109C2488473E00C661B9 /* ViewController.swift in Sources */,
-				A9C384FE2492DEC300EE5865 /* KeyboardExtension.swift in Sources */,
+				A9CE109C2488473E00C661B9 /* ChatViewController.swift in Sources */,
 				A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */,
+				A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */,
 				A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */,
+				A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */,
+				A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */,
 				A928178524886067002B3528 /* ParentMessTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
