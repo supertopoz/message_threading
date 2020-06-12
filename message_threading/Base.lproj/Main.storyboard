@@ -16,8 +16,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56f-0V-e6d">
-                                <rect key="frame" x="20" y="44" width="146" height="30"/>
-                                <state key="normal" title="Get parent messages"/>
+                                <rect key="frame" x="20" y="44" width="98" height="30"/>
+                                <state key="normal" title="Get Messages"/>
                                 <connections>
                                     <action selector="getMessages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8e4-AP-hFj"/>
                                 </connections>
@@ -31,24 +31,39 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lr-yS-Pfy">
-                                <rect key="frame" x="20" y="807" width="374" height="34"/>
+                                <rect key="frame" x="20" y="807" width="322" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="aHF-bA-U8z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpQ-xL-0p3">
+                                <rect key="frame" x="348" y="807" width="46" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="paperplane.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CmN-5o-kkW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EpQ-xL-0p3" secondAttribute="trailing" constant="20" id="0bu-E1-2cd"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="56f-0V-e6d" secondAttribute="bottom" constant="8" id="GFL-t9-cCh"/>
+                            <constraint firstItem="EpQ-xL-0p3" firstAttribute="leading" secondItem="1lr-yS-Pfy" secondAttribute="trailing" constant="6" id="NSj-mr-Ieo"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="P5C-14-ikW"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="anB-J7-EEr"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="leading" secondItem="56f-0V-e6d" secondAttribute="leading" id="blz-73-uIK"/>
                             <constraint firstItem="1lr-yS-Pfy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fty-0g-Qpp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1lr-yS-Pfy" secondAttribute="trailing" constant="20" id="hUk-RH-40X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1lr-yS-Pfy" secondAttribute="trailing" constant="72" id="hUk-RH-40X"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="l6R-hA-4LN"/>
                             <constraint firstItem="1lr-yS-Pfy" firstAttribute="top" secondItem="jrl-MI-jBW" secondAttribute="bottom" constant="8" id="qgc-If-X9a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EpQ-xL-0p3" secondAttribute="bottom" constant="21" id="viF-vk-oQq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1lr-yS-Pfy" secondAttribute="bottom" constant="21" id="y3o-RE-J8c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -63,4 +78,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

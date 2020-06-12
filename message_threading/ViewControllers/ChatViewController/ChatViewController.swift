@@ -30,13 +30,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func getMessages(_ sender: Any) {
         let query = currentChannel?.createPreviousMessageListQuery()
-        query?.includeReplies = true
-        query?.includeThreadInfo = true
+//        query?.includeReplies = true
+//        query?.includeThreadInfo = true
+        query?.reverse = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
             print(messages)
-            self.parentMessageStore = messages
+            self.parentMessageStore = messages?.reversed()
             self.parentMessages.reloadData();
         })
         
+    }
+    
+    @IBAction func sendMessage(_ sender: Any) {
+        print(messageInputField.text)
+        guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
+            print("Couldn't create params")
+            return
+            
+        }
+        
+        currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+            guard error == nil else {   // Error.
+                print(error)
+                return
+            }
+        })
     }
 }

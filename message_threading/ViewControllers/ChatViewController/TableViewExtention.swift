@@ -36,14 +36,17 @@ extension ChatViewController {
                 userMessage.self = message as! SBDUserMessage
                 cell.messageIdLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
                 cell.messageMessageLabel.text = "\( String(userMessage.message ?? ""))"
+    
             } else {
-                cell
+                
             }
             print(message)
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         return cell
     }
+    
+    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
