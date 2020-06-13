@@ -14,7 +14,7 @@ extension ChatViewController {
     
     func initTableView(nib: UINib) {
         parentMessages.register(nib, forCellReuseIdentifier: "ParentMessages")
-        parentMessages.estimatedRowHeight = 200
+     parentMessages.estimatedRowHeight = 200
         parentMessages.rowHeight = UITableView.automaticDimension
         parentMessages.separatorColor = .clear
         parentMessages.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
@@ -36,19 +36,21 @@ extension ChatViewController {
                 userMessage.self = message as! SBDUserMessage
                 cell.messageIdLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
                 cell.messageMessageLabel.text = "\( String(userMessage.message ?? ""))"
-    
             } else {
                 
             }
-            print(message)
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        
+//        self.nib.frame.size.width = 80 // Set your desired width here
+//
+//        nib.label.text = "hello world" // Set your dynamic text here
+//
+//        nib.layoutIfNeeded() // This will calculate and set the heights accordingly
+//
+//        nib.frame.size.height = nib.view.frame.height + 16 // 16 is the total of top gap and bottom gap of auto layout
+        
         return cell
     }
-    
-    
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
+
 }

@@ -18,12 +18,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentChannel: SBDGroupChannel? = nil
     var parentMessageStore: [SBDBaseMessage]? = []
     @IBOutlet weak var messageInputField: UITextField!
+    var nib: UINib!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSendbird()
-        let nib = UINib(nibName: "ParentMessTableViewCell", bundle: nil)
+        nib = UINib(nibName: "ParentMessTableViewCell", bundle: nil)
         initTableView(nib: nib)
+        
+        
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
         initKeyboardAdjustments(tap: tap)
     }
@@ -34,7 +38,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        query?.includeThreadInfo = true
         query?.reverse = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
-            print(messages)
             self.parentMessageStore = messages?.reversed()
             self.parentMessages.reloadData();
         })
@@ -42,18 +45,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func sendMessage(_ sender: Any) {
-        print(messageInputField.text)
         guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
             print("Couldn't create params")
             return
             
         }
         
-        currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+        let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
             guard error == nil else {   // Error.
                 print(error)
                 return
             }
+            
+            print(userMessage?.sendingStatus)
         })
+        print(message.sendingStatus.rawValue)
     }
 }

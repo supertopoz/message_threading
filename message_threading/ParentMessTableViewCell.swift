@@ -14,19 +14,19 @@ class ParentMessTableViewCell: UITableViewCell {
     @IBOutlet weak var messageMessageLabel: UILabel!
     @IBOutlet weak var messageHolderView: UIView!
     
+    @IBOutlet weak var mainXibView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         messageHolderView.layer.cornerRadius = 15
-        let newSize = messageMessageLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
-        
-        messageHolderView.frame.size = CGSize(width: newSize.width, height: newSize.height)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+
     
 }
