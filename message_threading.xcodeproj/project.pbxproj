@@ -22,6 +22,9 @@
 		A9D863D424984F6C00A2D58D /* MyMessagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D863D224984F6C00A2D58D /* MyMessagesTableViewCell.xib */; };
 		A9D863D72498752000A2D58D /* AdminMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863D52498752000A2D58D /* AdminMessageTableViewCell.swift */; };
 		A9D863D82498752000A2D58D /* AdminMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D863D62498752000A2D58D /* AdminMessageTableViewCell.xib */; };
+		A9D863DB2498999900A2D58D /* AdminMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DA2498999900A2D58D /* AdminMessageModel.swift */; };
+		A9D863DD24989FBA00A2D58D /* OtherUserMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DC24989FBA00A2D58D /* OtherUserMessageModel.swift */; };
+		A9D863DF2498A2A600A2D58D /* MyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */; };
 		DA1639DD01CDB713F9D97F3A /* Pods_message_threading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		A9D863D224984F6C00A2D58D /* MyMessagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessagesTableViewCell.xib; sourceTree = "<group>"; };
 		A9D863D52498752000A2D58D /* AdminMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageTableViewCell.swift; sourceTree = "<group>"; };
 		A9D863D62498752000A2D58D /* AdminMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminMessageTableViewCell.xib; sourceTree = "<group>"; };
+		A9D863DA2498999900A2D58D /* AdminMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageModel.swift; sourceTree = "<group>"; };
+		A9D863DC24989FBA00A2D58D /* OtherUserMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserMessageModel.swift; sourceTree = "<group>"; };
+		A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageModel.swift; sourceTree = "<group>"; };
 		EABF7F4B98ED7428196DDC30 /* Pods-message_threading.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-message_threading.release.xcconfig"; path = "Target Support Files/Pods-message_threading/Pods-message_threading.release.xcconfig"; sourceTree = "<group>"; };
 		F6B1DA1530AB4E98994BE921 /* Pods-message_threading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-message_threading.debug.xcconfig"; path = "Target Support Files/Pods-message_threading/Pods-message_threading.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +86,7 @@
 		A9C385022492EEE800EE5865 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9D863D92498997700A2D58D /* Message Models */,
 				A9C385032492EF0300EE5865 /* ChatViewController */,
 				A9D863CD2498303B00A2D58D /* OtherUsersTableViewCell.swift */,
 				A9D863CE2498303B00A2D58D /* OtherUsersTableViewCell.xib */,
@@ -132,6 +139,16 @@
 				A9CE10A52488474000C661B9 /* Info.plist */,
 			);
 			path = message_threading;
+			sourceTree = "<group>";
+		};
+		A9D863D92498997700A2D58D /* Message Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9D863DA2498999900A2D58D /* AdminMessageModel.swift */,
+				A9D863DC24989FBA00A2D58D /* OtherUserMessageModel.swift */,
+				A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */,
+			);
+			path = "Message Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,14 +270,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CE109C2488473E00C661B9 /* ChatViewController.swift in Sources */,
+				A9D863DD24989FBA00A2D58D /* OtherUserMessageModel.swift in Sources */,
 				A9D863D324984F6C00A2D58D /* MyMessagesTableViewCell.swift in Sources */,
 				A9D863D72498752000A2D58D /* AdminMessageTableViewCell.swift in Sources */,
 				A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */,
 				A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */,
+				A9D863DB2498999900A2D58D /* AdminMessageModel.swift in Sources */,
 				A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */,
 				A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */,
 				A9D863CF2498303B00A2D58D /* OtherUsersTableViewCell.swift in Sources */,
 				A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */,
+				A9D863DF2498A2A600A2D58D /* MyMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

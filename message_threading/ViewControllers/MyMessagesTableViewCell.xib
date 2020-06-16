@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-Bw-8zS" userLabel="Sender Label">
-                        <rect key="frame" x="16" y="16" width="288" height="21"/>
+                        <rect key="frame" x="16" y="8" width="288" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="oHh-5j-ZYA"/>
                         </constraints>
@@ -26,10 +26,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRI-tg-bJN" userLabel="Message Holder View">
-                        <rect key="frame" x="206.5" y="55" width="97.5" height="134"/>
+                        <rect key="frame" x="206.5" y="31" width="97.5" height="158"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-Yb-7JH" userLabel="Message Label">
-                                <rect key="frame" x="10" y="10" width="77.5" height="114"/>
+                                <rect key="frame" x="10" y="10" width="77.5" height="138"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -49,8 +49,8 @@
                     <constraint firstItem="WRI-tg-bJN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="48" id="ace-Ke-fTq"/>
                     <constraint firstItem="WRI-tg-bJN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="c8j-9x-RE7"/>
                     <constraint firstAttribute="trailing" secondItem="rsk-Bw-8zS" secondAttribute="trailing" constant="16" id="mdn-Wb-TTF"/>
-                    <constraint firstItem="rsk-Bw-8zS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="nxy-Uu-aMU"/>
-                    <constraint firstItem="WRI-tg-bJN" firstAttribute="top" secondItem="rsk-Bw-8zS" secondAttribute="bottom" constant="18" id="sMA-c7-boG"/>
+                    <constraint firstItem="rsk-Bw-8zS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nxy-Uu-aMU"/>
+                    <constraint firstItem="WRI-tg-bJN" firstAttribute="top" secondItem="rsk-Bw-8zS" secondAttribute="bottom" constant="2" id="sMA-c7-boG"/>
                     <constraint firstItem="rsk-Bw-8zS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="zGd-iq-uGb"/>
                 </constraints>
             </tableViewCellContentView>

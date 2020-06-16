@@ -13,10 +13,11 @@ import SendBirdSDK
 extension ChatViewController {
     
     func initTableView(messageCells: (otherUsersMessages: UINib, myMessages: UINib, adminMessages: UINib)) {
-        messageTableView.register(messageCells.otherUsersMessages, forCellReuseIdentifier: "OtherUsersMessages")
+        
+        messageTableView.register(messageCells.otherUsersMessages, forCellReuseIdentifier: "OtherUserMessages")
         messageTableView.register(messageCells.myMessages, forCellReuseIdentifier: "MyMessages")
         messageTableView.register(messageCells.adminMessages, forCellReuseIdentifier: "AdminMessages")
-
+        
         messageTableView.estimatedRowHeight = 200
         messageTableView.rowHeight = UITableView.automaticDimension
         messageTableView.separatorColor = .clear
@@ -30,47 +31,29 @@ extension ChatViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let currentUserId = SBDMain.getCurrentUser()?.userId
-        var cell = messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
-        
-        
-        
-        
+        var cell = UITableViewCell()// messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
         
         if let message = self.parentMessageStore?[indexPath[1]] {
-
-            if message is SBDUserMessage {
             
-                
+            if message is SBDUserMessage {
                 var userMessage = SBDUserMessage.init()
                 userMessage.self = message as! SBDUserMessage
+                
                 let senderId = userMessage.sender?.userId
                 if senderId == currentUserId {
-                    let myMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "MyMessages")! as! MyMessagesTableViewCell
-                    myMessageCell.senderLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
-                     myMessageCell.messageLabel.text = "\( String(userMessage.message ?? ""))"
-                     myMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-                     return myMessageCell
+                    let myMessageCell = MyMessageCell(messageObj: message as! SBDUserMessage, table: messageTableView)
+                    return myMessageCell.createCell()
                 } else {
-                    let otherUserMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "OtherUserMessages")! as! MyMessagesTableViewCell
-                    otherUserMessageCell.senderLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
-                     otherUserMessageCell.messageLabel.text = "\( String(userMessage.message ?? ""))"
-                     otherUserMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-                     return otherUserMessageCell
+                    let otherUserMessage = OtherUserCell(messageObj: message as! SBDUserMessage, table: messageTableView)
+                    return otherUserMessage.createCell()
                 }
             }
+            
             if message is SBDAdminMessage {
-                print("Found Admin message")
-                var adminMessage = SBDAdminMessage.init()
-                adminMessage.self = message as! SBDAdminMessage
-                let adminMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "AdminMessages")! as! AdminMessageTableViewCell
-                adminMessageCell.adminMessageLabel.text = adminMessage.message
-                adminMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-                
-                
-                return adminMessageCell
+                let adminMessageCell = AdminMessageCell(messageObj: message as! SBDAdminMessage, table: messageTableView)
+                return adminMessageCell.createCell()
             }
         }
-        cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         return cell
         
         

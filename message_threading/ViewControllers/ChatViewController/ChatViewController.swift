@@ -22,6 +22,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var otherUsersMessages: UINib!
     var myMessages: UINib!
     var adminMessages: UINib!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSendbird()
@@ -70,7 +72,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 })
             DispatchQueue.main.async{
-                print(message.sendingStatus.rawValue)
                 self.parentMessageStore?.insert(message, at: 0)
                 self.messageTableView.reloadData();
             }
