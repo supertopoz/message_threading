@@ -70,7 +70,7 @@
                     </view>
                     <connections>
                         <outlet property="messageInputField" destination="1lr-yS-Pfy" id="un1-hO-EWQ"/>
-                        <outlet property="parentMessages" destination="jrl-MI-jBW" id="TL2-rn-X6K"/>
+                        <outlet property="messageTableView" destination="jrl-MI-jBW" id="FlG-xm-U8i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

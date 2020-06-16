@@ -12,45 +12,63 @@ import SendBirdSDK
 
 extension ChatViewController {
     
-    func initTableView(nib: UINib) {
-        parentMessages.register(nib, forCellReuseIdentifier: "ParentMessages")
-     parentMessages.estimatedRowHeight = 200
-        parentMessages.rowHeight = UITableView.automaticDimension
-        parentMessages.separatorColor = .clear
-        parentMessages.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
-        parentMessages.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: parentMessages.bounds.size.width - 8.0)
+    func initTableView(messageCells: (otherUsersMessages: UINib, myMessages: UINib)) {
+        messageTableView.register(messageCells.otherUsersMessages, forCellReuseIdentifier: "OtherUsersMessages")
+        messageTableView.register(messageCells.myMessages, forCellReuseIdentifier: "MyMessages")
+        messageTableView.estimatedRowHeight = 200
+        messageTableView.rowHeight = UITableView.automaticDimension
+        messageTableView.separatorColor = .clear
+        messageTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+        messageTableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: messageTableView.bounds.size.width - 8.0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parentMessageStore?.count ?? 2
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = parentMessages.dequeueReusableCell(withIdentifier: "ParentMessages")! as! ParentMessTableViewCell
+        let currentUserId = SBDMain.getCurrentUser()?.userId
+        var cell = messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
+        
+        
+        
+        
+        
         if let message = self.parentMessageStore?[indexPath[1]] {
-            //  let msg: SBDBaseMessage = message
+
             if message is SBDUserMessage {
+            
                 
                 var userMessage = SBDUserMessage.init()
                 userMessage.self = message as! SBDUserMessage
-                cell.messageIdLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
-                cell.messageMessageLabel.text = "\( String(userMessage.message ?? ""))"
-            } else {
-                
+                let senderId = userMessage.sender?.userId
+                if senderId == currentUserId {
+                    let myMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "MyMessages")! as! MyMessagesTableViewCell
+                    myMessageCell.senderLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
+                     myMessageCell.messageLabel.text = "\( String(userMessage.message ?? ""))"
+                     myMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                     return myMessageCell
+                } else {
+                    let otherUserMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "OtherUserMessages")! as! MyMessagesTableViewCell
+                    otherUserMessageCell.senderLabel.text = "\( String(userMessage.sender?.nickname ?? ""))"
+                     otherUserMessageCell.messageLabel.text = "\( String(userMessage.message ?? ""))"
+                     otherUserMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                     return otherUserMessageCell
+                }
+            }
+            if message is SBDAdminMessage {
+                print("Found Admin message")
+    
             }
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        
-//        self.nib.frame.size.width = 80 // Set your desired width here
-//
-//        nib.label.text = "hello world" // Set your dynamic text here
-//
-//        nib.layoutIfNeeded() // This will calculate and set the heights accordingly
-//
-//        nib.frame.size.height = nib.view.frame.height + 16 // 16 is the total of top gap and bottom gap of auto layout
-        
         return cell
+        
+        
+        
+        
     }
-
+    
+    
+    
 }

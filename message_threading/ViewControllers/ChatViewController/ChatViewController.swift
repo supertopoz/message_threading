@@ -14,17 +14,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    @IBOutlet weak var parentMessages: UITableView!
+  //  @IBOutlet weak var messageTableView: UITableView!
+    @IBOutlet weak var messageTableView: UITableView!
     var currentChannel: SBDGroupChannel? = nil
     var parentMessageStore: [SBDBaseMessage]? = []
     @IBOutlet weak var messageInputField: UITextField!
-    var nib: UINib!
+    var otherUsersMessages: UINib!
+    var myMessages: UINib!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSendbird()
-        nib = UINib(nibName: "ParentMessTableViewCell", bundle: nil)
-        initTableView(nib: nib)
+        otherUsersMessages = UINib(nibName: "OtherUsersTableViewCell", bundle: nil)
+        myMessages = UINib(nibName: "MyMessagesTableViewCell", bundle: nil)
+        let messageCells = (otherUsersMessages: otherUsersMessages!, myMessages: myMessages!)
+        initTableView(messageCells: messageCells)
         
         
         
@@ -39,26 +43,38 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         query?.reverse = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
             self.parentMessageStore = messages?.reversed()
-            self.parentMessages.reloadData();
+            self.messageTableView.reloadData();
         })
         
     }
     
     @IBAction func sendMessage(_ sender: Any) {
-        guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
-            print("Couldn't create params")
-            return
-            
-        }
         
-        let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
-            guard error == nil else {   // Error.
-                print(error)
-                return
+        if messageInputField.text != "" {
+                guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
+                    print("Couldn't create params")
+                    return
+                    
+                }
+                let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+                    guard error == nil else {   // Error.
+                        print(error)
+                        return
+                    }
+                    if let message = userMessage {
+                        DispatchQueue.main.async{
+                            self.parentMessageStore?[0] = message
+                            self.messageTableView.reloadData();
+                        }
+                    }
+                })
+            DispatchQueue.main.async{
+                print(message.sendingStatus.rawValue)
+                self.parentMessageStore?.insert(message, at: 0)
+                self.messageTableView.reloadData();
             }
-            
-            print(userMessage?.sendingStatus)
-        })
-        print(message.sendingStatus.rawValue)
-    }
+
+            }
+        }
+
 }

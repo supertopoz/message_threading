@@ -1,32 +1,28 @@
 //
-//  ParentMessTableViewCell.swift
+//  MyMessagesTableViewCell.swift
 //  message_threading
 //
-//  Created by Jason.Allshorn on 2020/06/04.
+//  Created by Jason.Allshorn on 2020/06/16.
 //  Copyright © 2020 Jason.Allshorn. All rights reserved.
 //
 
 import UIKit
 
-class ParentMessTableViewCell: UITableViewCell {
+class MyMessagesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var messageIdLabel: UILabel!
-    @IBOutlet weak var messageMessageLabel: UILabel!
+    @IBOutlet weak var senderLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messageHolderView: UIView!
-    
-    @IBOutlet weak var mainXibView: UIView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        messageHolderView.layer.cornerRadius = 15
+        self.messageHolderView.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
-
     
 }

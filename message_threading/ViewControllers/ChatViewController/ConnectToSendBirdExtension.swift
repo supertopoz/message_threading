@@ -19,7 +19,7 @@ extension ChatViewController {
                 
             }
             print("Connected")
-            let channelUrl = "sendbird_group_channel_127670705_a923ca4eebd7ae5e487f1c693a75982b85831b4a"
+            let channelUrl = "sendbird_group_channel_127670705_1807adade5874514d3669a18bcf14efc6db67850"
             SBDGroupChannel.getWithUrl(channelUrl) { (channel, error) in
                 guard error == nil else {
                     print(error)
