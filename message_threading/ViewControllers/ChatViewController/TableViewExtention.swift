@@ -12,9 +12,11 @@ import SendBirdSDK
 
 extension ChatViewController {
     
-    func initTableView(messageCells: (otherUsersMessages: UINib, myMessages: UINib)) {
+    func initTableView(messageCells: (otherUsersMessages: UINib, myMessages: UINib, adminMessages: UINib)) {
         messageTableView.register(messageCells.otherUsersMessages, forCellReuseIdentifier: "OtherUsersMessages")
         messageTableView.register(messageCells.myMessages, forCellReuseIdentifier: "MyMessages")
+        messageTableView.register(messageCells.adminMessages, forCellReuseIdentifier: "AdminMessages")
+
         messageTableView.estimatedRowHeight = 200
         messageTableView.rowHeight = UITableView.automaticDimension
         messageTableView.separatorColor = .clear
@@ -58,7 +60,14 @@ extension ChatViewController {
             }
             if message is SBDAdminMessage {
                 print("Found Admin message")
-    
+                var adminMessage = SBDAdminMessage.init()
+                adminMessage.self = message as! SBDAdminMessage
+                let adminMessageCell = messageTableView.dequeueReusableCell(withIdentifier: "AdminMessages")! as! AdminMessageTableViewCell
+                adminMessageCell.adminMessageLabel.text = adminMessage.message
+                adminMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                
+                
+                return adminMessageCell
             }
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))

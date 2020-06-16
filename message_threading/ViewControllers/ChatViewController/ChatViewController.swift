@@ -21,13 +21,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageInputField: UITextField!
     var otherUsersMessages: UINib!
     var myMessages: UINib!
-    
+    var adminMessages: UINib!
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSendbird()
         otherUsersMessages = UINib(nibName: "OtherUsersTableViewCell", bundle: nil)
         myMessages = UINib(nibName: "MyMessagesTableViewCell", bundle: nil)
-        let messageCells = (otherUsersMessages: otherUsersMessages!, myMessages: myMessages!)
+        adminMessages = UINib(nibName: "AdminMessageTableViewCell", bundle: nil)
+        let messageCells = (otherUsersMessages: otherUsersMessages!, myMessages: myMessages!, adminMessages: adminMessages!)
         initTableView(messageCells: messageCells)
         
         
