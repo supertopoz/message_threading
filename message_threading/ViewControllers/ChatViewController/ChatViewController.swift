@@ -9,12 +9,12 @@
 import UIKit
 import SendBirdSDK
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SBDChannelDelegate {
     
     
     
     
-  //  @IBOutlet weak var messageTableView: UITableView!
+    //  @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var messageTableView: UITableView!
     var currentChannel: SBDGroupChannel? = nil
     var parentMessageStore: [SBDBaseMessage]? = []
@@ -26,6 +26,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SBDMain.add(self as SBDChannelDelegate, identifier: "1")
         connectToSendbird()
         otherUsersMessages = UINib(nibName: "OtherUsersTableViewCell", bundle: nil)
         myMessages = UINib(nibName: "MyMessagesTableViewCell", bundle: nil)
@@ -41,10 +42,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func getMessages(_ sender: Any) {
         let query = currentChannel?.createPreviousMessageListQuery()
-//        query?.includeReplies = true
-//        query?.includeThreadInfo = true
         query?.reverse = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
+            guard error == nil else {
+                self.showToast("Failed to fetch messages: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            self.showToast("Fetched 30 messages")
             self.parentMessageStore = messages?.reversed()
             self.messageTableView.reloadData();
         })
@@ -54,29 +58,42 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendMessage(_ sender: Any) {
         
         if messageInputField.text != "" {
-                guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
-                    print("Couldn't create params")
+            guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
+                print("Couldn't create params")
+                return
+                
+            }
+            let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+                guard error == nil else {
+                    print(error)
                     return
-                    
                 }
-                let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
-                    guard error == nil else {   // Error.
-                        print(error)
-                        return
+                if let message = userMessage {
+                    DispatchQueue.main.async{
+                        self.showToast("Sent successfully")
+                        self.parentMessageStore?[0] = message
+                        self.messageTableView.reloadData();
                     }
-                    if let message = userMessage {
-                        DispatchQueue.main.async{
-                            self.parentMessageStore?[0] = message
-                            self.messageTableView.reloadData();
-                        }
-                    }
-                })
+                }
+            })
             DispatchQueue.main.async{
+                self.showToast("Message sending...")
                 self.parentMessageStore?.insert(message, at: 0)
                 self.messageTableView.reloadData();
             }
-
+            
+        }
+        messageInputField.text = ""
+    }
+    
+    func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
+        if sender == self.currentChannel {
+            guard let channel = self.currentChannel else { return }
+            DispatchQueue.main.async {
+                self.showToast("Message arrived!")
+                self.parentMessageStore?.insert(message, at: 0)
+                self.messageTableView.reloadData();
             }
         }
-
+    }
 }

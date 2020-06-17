@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9AFCCE0249972F30074D095 /* Virgil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AFCCDF249972F30074D095 /* Virgil.swift */; };
 		A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385002492EDB000EE5865 /* KeyboardExtension.swift */; };
 		A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385042492EF3600EE5865 /* TableViewExtention.swift */; };
 		A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */; };
@@ -25,11 +26,13 @@
 		A9D863DB2498999900A2D58D /* AdminMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DA2498999900A2D58D /* AdminMessageModel.swift */; };
 		A9D863DD24989FBA00A2D58D /* OtherUserMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DC24989FBA00A2D58D /* OtherUserMessageModel.swift */; };
 		A9D863DF2498A2A600A2D58D /* MyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */; };
+		A9D863E22498A85D00A2D58D /* ToastExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D863E12498A85D00A2D58D /* ToastExtenstion.swift */; };
 		DA1639DD01CDB713F9D97F3A /* Pods_message_threading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_message_threading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9AFCCDF249972F30074D095 /* Virgil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virgil.swift; sourceTree = "<group>"; };
 		A9C385002492EDB000EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		A9C385042492EF3600EE5865 /* TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtention.swift; sourceTree = "<group>"; };
 		A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToSendBirdExtension.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		A9D863DA2498999900A2D58D /* AdminMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageModel.swift; sourceTree = "<group>"; };
 		A9D863DC24989FBA00A2D58D /* OtherUserMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserMessageModel.swift; sourceTree = "<group>"; };
 		A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageModel.swift; sourceTree = "<group>"; };
+		A9D863E12498A85D00A2D58D /* ToastExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastExtenstion.swift; sourceTree = "<group>"; };
 		EABF7F4B98ED7428196DDC30 /* Pods-message_threading.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-message_threading.release.xcconfig"; path = "Target Support Files/Pods-message_threading/Pods-message_threading.release.xcconfig"; sourceTree = "<group>"; };
 		F6B1DA1530AB4E98994BE921 /* Pods-message_threading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-message_threading.debug.xcconfig"; path = "Target Support Files/Pods-message_threading/Pods-message_threading.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,11 +87,9 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A9C385022492EEE800EE5865 /* ViewControllers */ = {
+		A9AFCCDE249970820074D095 /* MessageCells */ = {
 			isa = PBXGroup;
 			children = (
-				A9D863D92498997700A2D58D /* Message Models */,
-				A9C385032492EF0300EE5865 /* ChatViewController */,
 				A9D863CD2498303B00A2D58D /* OtherUsersTableViewCell.swift */,
 				A9D863CE2498303B00A2D58D /* OtherUsersTableViewCell.xib */,
 				A9D863D124984F6C00A2D58D /* MyMessagesTableViewCell.swift */,
@@ -95,12 +97,21 @@
 				A9D863D52498752000A2D58D /* AdminMessageTableViewCell.swift */,
 				A9D863D62498752000A2D58D /* AdminMessageTableViewCell.xib */,
 			);
+			path = MessageCells;
+			sourceTree = "<group>";
+		};
+		A9C385022492EEE800EE5865 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9C385032492EF0300EE5865 /* ChatViewController */,
+			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A9C385032492EF0300EE5865 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A9AFCCDE249970820074D095 /* MessageCells */,
 				A9CE109B2488473E00C661B9 /* ChatViewController.swift */,
 				A9C385002492EDB000EE5865 /* KeyboardExtension.swift */,
 				A9C385042492EF3600EE5865 /* TableViewExtention.swift */,
@@ -130,6 +141,8 @@
 		A9CE10962488473E00C661B9 /* message_threading */ = {
 			isa = PBXGroup;
 			children = (
+				A9D863E02498A84400A2D58D /* Toast */,
+				A9D863D92498997700A2D58D /* Message Models */,
 				A9C385022492EEE800EE5865 /* ViewControllers */,
 				A9CE10972488473E00C661B9 /* AppDelegate.swift */,
 				A9CE10992488473E00C661B9 /* SceneDelegate.swift */,
@@ -137,6 +150,7 @@
 				A9CE10A02488474000C661B9 /* Assets.xcassets */,
 				A9CE10A22488474000C661B9 /* LaunchScreen.storyboard */,
 				A9CE10A52488474000C661B9 /* Info.plist */,
+				A9AFCCDF249972F30074D095 /* Virgil.swift */,
 			);
 			path = message_threading;
 			sourceTree = "<group>";
@@ -149,6 +163,14 @@
 				A9D863DE2498A2A600A2D58D /* MyMessageModel.swift */,
 			);
 			path = "Message Models";
+			sourceTree = "<group>";
+		};
+		A9D863E02498A84400A2D58D /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				A9D863E12498A85D00A2D58D /* ToastExtenstion.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +301,9 @@
 				A9CE109A2488473E00C661B9 /* SceneDelegate.swift in Sources */,
 				A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */,
 				A9D863CF2498303B00A2D58D /* OtherUsersTableViewCell.swift in Sources */,
+				A9D863E22498A85D00A2D58D /* ToastExtenstion.swift in Sources */,
 				A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */,
+				A9AFCCE0249972F30074D095 /* Virgil.swift in Sources */,
 				A9D863DF2498A2A600A2D58D /* MyMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

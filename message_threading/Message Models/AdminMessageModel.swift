@@ -11,9 +11,11 @@ import SendBirdSDK
 import UIKit
 
 struct AdminMessageCell  {
+    let messageId: Int64
     let adminMessage: SBDAdminMessage
     let cell: AdminMessageTableViewCell
     init(messageObj: SBDAdminMessage, table: UITableView) {
+        self.messageId = messageObj.messageId
         self.adminMessage = SBDAdminMessage.init()
         self.cell = table.dequeueReusableCell(withIdentifier: "AdminMessages")! as! AdminMessageTableViewCell
         self.cell.adminMessageLabel.text = messageObj.message
