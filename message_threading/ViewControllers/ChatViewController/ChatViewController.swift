@@ -8,6 +8,7 @@
 
 import UIKit
 import SendBirdSDK
+import VirgilE3Kit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SBDChannelDelegate {
     
@@ -22,12 +23,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var otherUsersMessages: UINib!
     var myMessages: UINib!
     var adminMessages: UINib!
+    let virgil = Virgil()
+    var eThree: EThree! = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SBDMain.add(self as SBDChannelDelegate, identifier: "1")
-        connectToSendbird()
+        initConnections()
         otherUsersMessages = UINib(nibName: "OtherUsersTableViewCell", bundle: nil)
         myMessages = UINib(nibName: "MyMessagesTableViewCell", bundle: nil)
         adminMessages = UINib(nibName: "AdminMessageTableViewCell", bundle: nil)
@@ -55,45 +58,119 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    @IBAction func sendMessage(_ sender: Any) {
+    func encryptMessage (message: String) {
         
-        if messageInputField.text != "" {
-            guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
-                print("Couldn't create params")
+        // prepare a message
+        let messageToEncrypt = "Hello, Alice and Den!"
+        let identities = ["User11"]
+
+        // Search user's Cards to encrypt for
+        self.eThree!.findUsers(with: identities) { findUsersResult, error in
+            guard let findUsersResult = findUsersResult, error == nil else {
+                // Error handling here
+                print(error?.localizedDescription)
                 return
-                
             }
-            let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
-                guard error == nil else {
-                    print(error)
-                    return
-                }
-                if let message = userMessage {
-                    DispatchQueue.main.async{
-                        self.showToast("Sent successfully")
-                        self.parentMessageStore?[0] = message
-                        self.messageTableView.reloadData();
-                    }
-                }
-            })
-            DispatchQueue.main.async{
-                self.showToast("Message sending...")
-                self.parentMessageStore?.insert(message, at: 0)
-                self.messageTableView.reloadData();
+
+            do {
+                 let encryptedMessage = try self.eThree.authEncrypt(text: messageToEncrypt, for: findUsersResult)
+            } catch {
+                print(error.localizedDescription)
             }
+           
+        }
+        
+//        let members = currentChannel?.members
+//        var identities:[String] = []
+//        for member in (members! as NSArray as! [SBDMember]) {
+//            let memberObj: SBDMember
+//            memberObj = member
+//            identities.append(memberObj.userId)
+//        }
+//        do {
+//               let key = try self.virgil.eThree.hasLocalPrivateKey()
+//            print("Found local private Key for current user")
+//        } catch {
+//            print("OOPS! no private key")
+//            return
+//        }
+//        let currentUserID = SBDMain.getCurrentUser()?.userId
+//        let indexOfCurrentUser = identities.firstIndex(of: currentUserID!)!
+//        identities.remove(at: indexOfCurrentUser)
+//        let indexOfDashboardAdmin = identities.firstIndex(of: "9e2c2921-a21a-4c10-91bb-c15cf6da417f")!
+//        identities.remove(at: indexOfDashboardAdmin)
+//        print(identities)
+//        self.virgil.eThree.findUsers(with: identities){ findUsersResult, error in
+//            guard let findUsersResult = findUsersResult, error == nil else {
+//                print("VIGIL ERROR: \(String(describing: error?.localizedDescription))")
+//                return
+//            }
+//            print(findUsersResult)
+//            do {
+//                   let key = try self.virgil.eThree.hasLocalPrivateKey()
+//                print("Found local private Key for current user")
+//            } catch {
+//                print("OOPS! no private key")
+//                return
+//            }
+//            do {
+//                let encryptMessage = try self.virgil.eThree.authEncrypt(text: message, for: findUsersResult)
+//                print(encryptMessage)
+//                DispatchQueue.main.async {
+//                    self.showToast("Messages: \(encryptMessage)")
+//
+//                }
+//            } catch {
+//
+//                print(error.localizedDescription)
+//            }
+//        }
+    }
+        
+        @IBAction func sendMessage(_ sender: Any) {
             
-        }
-        messageInputField.text = ""
-    }
-    
-    func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
-        if sender == self.currentChannel {
-            guard let channel = self.currentChannel else { return }
-            DispatchQueue.main.async {
-                self.showToast("Message arrived!")
-                self.parentMessageStore?.insert(message, at: 0)
-                self.messageTableView.reloadData();
+            
+            if messageInputField.text != "" {
+                guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
+                    print("Couldn't create params")
+                    return
+                    
+                }
+                self.encryptMessage(message: messageInputField.text!)
+                //            let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+                //                guard error == nil else {
+                //                    print(error)
+                //                    return
+                //                }
+                //                if let message = userMessage {
+                //                    DispatchQueue.main.async{
+                //                        self.showToast("Sent successfully")
+                //                        self.parentMessageStore?[0] = message
+                //                        self.messageTableView.reloadData();
+                //                    }
+                //                }
+                //            })
+                //            DispatchQueue.main.async{
+                //                self.showToast("Message sending...")
+                //                self.parentMessageStore?.insert(message, at: 0)
+                //                self.messageTableView.reloadData();
+                //            }
+                //
+                //        }
+                messageInputField.text = ""
             }
         }
-    }
+        
+        
+        
+        func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
+            if sender == self.currentChannel {
+                guard let channel = self.currentChannel else { return }
+                DispatchQueue.main.async {
+                    self.showToast("Message arrived!")
+                    self.parentMessageStore?.insert(message, at: 0)
+                    self.messageTableView.reloadData();
+                }
+            }
+        }
 }

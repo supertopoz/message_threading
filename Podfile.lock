@@ -1,39 +1,39 @@
 PODS:
-  - SendBirdSDK (3.0.182)
-  - VirgilCrypto (5.3.0):
-    - VirgilCryptoFoundation (~> 0.12.0)
-  - VirgilCryptoFoundation (0.12.0):
-    - VSCCrypto/Common (= 0.12.0)
-    - VSCCrypto/Foundation (= 0.12.0)
-  - VirgilCryptoPythia (0.12.0):
-    - VirgilCryptoFoundation (= 0.12.0)
-    - VSCCrypto/Common (= 0.12.0)
-    - VSCCrypto/Foundation (= 0.12.0)
-    - VSCCrypto/Pythia (= 0.12.0)
-  - VirgilCryptoRatchet (0.12.0):
-    - VirgilCryptoFoundation (= 0.12.0)
-    - VSCCrypto/Common (= 0.12.0)
-    - VSCCrypto/Foundation (= 0.12.0)
-    - VSCCrypto/Ratchet (= 0.12.0)
-  - VirgilE3Kit (2.0.0):
-    - VirgilSDKPythia (~> 0.8.0)
-    - VirgilSDKRatchet (~> 0.5.0)
-  - VirgilSDK (7.2.0):
-    - VirgilCrypto (~> 5.3)
-  - VirgilSDKPythia (0.8.0):
-    - VirgilCryptoPythia (~> 0.12.0)
-    - VirgilSDK (~> 7.1)
-  - VirgilSDKRatchet (0.5.0):
-    - VirgilCryptoRatchet (~> 0.12.0)
-    - VirgilSDK (~> 7.1)
-  - VSCCrypto/Common (0.12.0)
-  - VSCCrypto/Foundation (0.12.0)
-  - VSCCrypto/Pythia (0.12.0)
-  - VSCCrypto/Ratchet (0.12.0)
+  - SendBirdSDK (3.0.185)
+  - VirgilCrypto (5.5.0):
+    - VirgilCryptoFoundation (= 0.15.2)
+  - VirgilCryptoFoundation (0.15.2):
+    - VSCCrypto/Common (= 0.15.2)
+    - VSCCrypto/Foundation (= 0.15.2)
+  - VirgilCryptoPythia (0.15.2):
+    - VirgilCryptoFoundation (= 0.15.2)
+    - VSCCrypto/Common (= 0.15.2)
+    - VSCCrypto/Foundation (= 0.15.2)
+    - VSCCrypto/Pythia (= 0.15.2)
+  - VirgilCryptoRatchet (0.15.2):
+    - VirgilCryptoFoundation (= 0.15.2)
+    - VSCCrypto/Common (= 0.15.2)
+    - VSCCrypto/Foundation (= 0.15.2)
+    - VSCCrypto/Ratchet (= 0.15.2)
+  - VirgilE3Kit (2.1.1):
+    - VirgilSDKPythia (~> 0.9.1)
+    - VirgilSDKRatchet (~> 0.7.0)
+  - VirgilSDK (7.2.1):
+    - VirgilCrypto (~> 5.5)
+  - VirgilSDKPythia (0.9.1):
+    - VirgilCryptoPythia (~> 0.15.2)
+    - VirgilSDK (~> 7.2.1)
+  - VirgilSDKRatchet (0.7.0):
+    - VirgilCryptoRatchet (~> 0.15.2)
+    - VirgilSDK (~> 7.2)
+  - VSCCrypto/Common (0.15.2)
+  - VSCCrypto/Foundation (0.15.2)
+  - VSCCrypto/Pythia (0.15.2)
+  - VSCCrypto/Ratchet (0.15.2)
 
 DEPENDENCIES:
   - SendBirdSDK
-  - VirgilE3Kit (~> 2.0.0)
+  - VirgilE3Kit
 
 SPEC REPOS:
   trunk:
@@ -49,17 +49,17 @@ SPEC REPOS:
     - VSCCrypto
 
 SPEC CHECKSUMS:
-  SendBirdSDK: 3f6395c19f6e0c3973bc1455411c35418b6a3e42
-  VirgilCrypto: c2831582c5230eeb2adba2365336c768cd6d8c59
-  VirgilCryptoFoundation: 79f23a7ab6db642268d31bc63b0cf54db416f089
-  VirgilCryptoPythia: 4234b6f84de6fd2448faf6628ecdce84f43650a4
-  VirgilCryptoRatchet: 5aa50ee540cdf1ff7d760fbe410e4f023f52dc18
-  VirgilE3Kit: 9d61b6af599a72d3e5c6334170987b59e9e6d82e
-  VirgilSDK: 1f67b77983f5b65a1b07e23070d78caec96614c3
-  VirgilSDKPythia: 778eb39b2c73a9d1832b9cad7eaa2cbf1be264cf
-  VirgilSDKRatchet: 9a365d3a434cda39af4e6326eaf25baeed75be68
-  VSCCrypto: e2c8df89e0dc348c2713554f6a2c8864e1cf412d
+  SendBirdSDK: 9726a20819b0e09991571061bf69ebdaaccf8706
+  VirgilCrypto: 48116c3abee03662dbae40d0957df5160c2a7128
+  VirgilCryptoFoundation: a804f11b826cefed157d7ef3d99f897e811cd971
+  VirgilCryptoPythia: 794e30acc757038e7fa9dfec46dcf73ef09363ff
+  VirgilCryptoRatchet: 09331bfbb7f93002a18f82cb6aa3b5fa6b801d9b
+  VirgilE3Kit: 11331f7461ae181a08082b77c49df884fad44b85
+  VirgilSDK: 6ac72d992d329bf4a30020850a2df6880d06592d
+  VirgilSDKPythia: 7c431d8bf85805c9b0f1fb8cb56058c1f6df59ed
+  VirgilSDKRatchet: d2f820c431cb3fa237351f558f7c0159c1bb0dea
+  VSCCrypto: 6cb5595d080b0a343819f44524f41df8587dab6c
 
-PODFILE CHECKSUM: 149e2dc4ddb0a3408fe75976ad6cf78cf71e5971
+PODFILE CHECKSUM: 8bfe2f25e25760fb457fdff41c5e262d5abc6651
 
 COCOAPODS: 1.8.4

@@ -8,5 +8,5 @@ target 'message_threading' do
   # Pods for message_threading
 
   pod 'SendBirdSDK'
-  pod 'VirgilE3Kit', '~> 2.0.0'
+  pod 'VirgilE3Kit'
 end

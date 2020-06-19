@@ -10,7 +10,7 @@ import Foundation
 import VirgilE3Kit
 
 struct VirgilUser: Codable {
-    let identity: String
+    let identity =  "Alice"
 }
 
 struct AuthToken: Codable {
@@ -22,10 +22,11 @@ struct JwtToken: Codable {
 }
 class Virgil {
     
-    var user: VirgilUser!
+    var user = VirgilUser()
     var eThree: EThree!
     
     private func getAuthToken(completion: @escaping ((Data?, Error?) -> Void)) {
+        print(self.user)
         guard let encoded = try? JSONEncoder().encode(self.user) else {
           //  completion(nil, nil)
             return
@@ -43,18 +44,17 @@ class Virgil {
                 completion(nil, error)
                 return
             }
- 
+            
             completion(data, nil)
             }.resume()
     }
     
    private func getJWTToken(authToken: Data, completion: @escaping ((String?, Error?) -> Void)){
-        
-        
-        
-        
+        let str = String(decoding: authToken, as: UTF8.self)
+        print(str)
         guard let authToken = try? JSONDecoder().decode(AuthToken.self, from: authToken) else {
              print("failed to decode authtoken")
+
              return
          }
         
@@ -98,24 +98,4 @@ class Virgil {
             })
         })
     }
-    
-    func login (user: String, jwtCallback: @escaping EThree.RenewJwtCallback, completion: @escaping ((String?, Error?) -> Void)) {
-        
-        
-        self.user = VirgilUser(identity: user)
-        let params = try! EThreeParams(identity: user, tokenCallback: jwtCallback )
-        self.eThree = try! EThree(params: params)
-        self.eThree.register { error in
-            guard error == nil else {
-                completion(nil, error)
-                return
-            }
-            completion("Vigil registered: \(user)", nil)
-        }
-    }
-    
-    func logout() {
-        let cleanup = try! self.eThree.cleanUp()
-    }
-    
 }
