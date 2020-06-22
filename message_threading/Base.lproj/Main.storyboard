@@ -50,13 +50,61 @@
                                     <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CmN-5o-kkW"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzj-gC-Eq7">
+                                <rect key="frame" x="144" y="44" width="250" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeI-em-zop">
+                                        <rect key="frame" x="95" y="2" width="61" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Rotate Key">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rotateUsersPrivateKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dqa-PW-hD5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Virgil tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ks-6V-rgX">
+                                        <rect key="frame" x="8" y="8" width="60" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPH-uN-3Wq">
+                                        <rect key="frame" x="182" y="2" width="60" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Clear User">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearCurrentUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p9u-oM-7NA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qeI-em-zop" firstAttribute="leading" secondItem="0Ks-6V-rgX" secondAttribute="trailing" constant="27" id="5Qy-fY-Jrs"/>
+                                    <constraint firstAttribute="bottom" secondItem="vPH-uN-3Wq" secondAttribute="bottom" constant="2" id="DyW-sE-ne0"/>
+                                    <constraint firstItem="0Ks-6V-rgX" firstAttribute="leading" secondItem="Gzj-gC-Eq7" secondAttribute="leading" constant="8" id="E90-WZ-UHd"/>
+                                    <constraint firstItem="0Ks-6V-rgX" firstAttribute="top" secondItem="Gzj-gC-Eq7" secondAttribute="top" constant="8" id="F5i-ln-9E9"/>
+                                    <constraint firstAttribute="trailing" secondItem="vPH-uN-3Wq" secondAttribute="trailing" constant="8" id="R97-js-TSM"/>
+                                    <constraint firstItem="qeI-em-zop" firstAttribute="leading" secondItem="0Ks-6V-rgX" secondAttribute="trailing" constant="27" id="RM4-qH-4Lx"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Ks-6V-rgX" secondAttribute="bottom" constant="8" id="Scl-hX-Fvg"/>
+                                    <constraint firstAttribute="bottom" secondItem="qeI-em-zop" secondAttribute="bottom" constant="2" id="TNN-eZ-5rU"/>
+                                    <constraint firstItem="qeI-em-zop" firstAttribute="top" secondItem="Gzj-gC-Eq7" secondAttribute="top" constant="2" id="g5M-a6-qoe"/>
+                                    <constraint firstItem="vPH-uN-3Wq" firstAttribute="leading" secondItem="qeI-em-zop" secondAttribute="trailing" constant="26" id="lFa-tV-KDI"/>
+                                    <constraint firstItem="vPH-uN-3Wq" firstAttribute="top" secondItem="Gzj-gC-Eq7" secondAttribute="top" constant="2" id="ucX-Nb-47j"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EpQ-xL-0p3" secondAttribute="trailing" constant="20" id="0bu-E1-2cd"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="56f-0V-e6d" secondAttribute="bottom" constant="8" id="GFL-t9-cCh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gzj-gC-Eq7" secondAttribute="trailing" constant="20" id="Lyu-xd-qsk"/>
                             <constraint firstItem="EpQ-xL-0p3" firstAttribute="leading" secondItem="1lr-yS-Pfy" secondAttribute="trailing" constant="6" id="NSj-mr-Ieo"/>
+                            <constraint firstItem="Gzj-gC-Eq7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NVe-2u-WGz"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="P5C-14-ikW"/>
+                            <constraint firstItem="Gzj-gC-Eq7" firstAttribute="leading" secondItem="56f-0V-e6d" secondAttribute="trailing" constant="26" id="PU4-Ph-XMA"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="anB-J7-EEr"/>
                             <constraint firstItem="jrl-MI-jBW" firstAttribute="leading" secondItem="56f-0V-e6d" secondAttribute="leading" id="blz-73-uIK"/>
                             <constraint firstItem="1lr-yS-Pfy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fty-0g-Qpp"/>
@@ -65,6 +113,7 @@
                             <constraint firstItem="1lr-yS-Pfy" firstAttribute="top" secondItem="jrl-MI-jBW" secondAttribute="bottom" constant="8" id="qgc-If-X9a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EpQ-xL-0p3" secondAttribute="bottom" constant="21" id="viF-vk-oQq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1lr-yS-Pfy" secondAttribute="bottom" constant="21" id="y3o-RE-J8c"/>
+                            <constraint firstItem="jrl-MI-jBW" firstAttribute="top" secondItem="Gzj-gC-Eq7" secondAttribute="bottom" constant="7" id="zN7-gt-NAS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

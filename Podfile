@@ -9,4 +9,7 @@ target 'message_threading' do
 
   pod 'SendBirdSDK'
   pod 'VirgilE3Kit'
+  pod 'VirgilSDK', '~> 7.2'
+  pod 'VirgilCrypto'
+  pod 'Alamofire', '~> 5.2'
 end

@@ -23,9 +23,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var otherUsersMessages: UINib!
     var myMessages: UINib!
     var adminMessages: UINib!
-    let virgil = Virgil()
-    var eThree: EThree! = nil
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +51,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.showToast("Fetched 30 messages")
             self.parentMessageStore = messages?.reversed()
             self.messageTableView.reloadData();
-        })
-        
+        })        
     }
+    
+    @IBAction func clearCurrentUser(_ sender: Any) {
+        VirgilClient.shared.clearUser(completion: {(result, error) in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            print("User removed")
+        })
+    }
+    
+    @IBAction func rotateUsersPrivateKey(_ sender: Any) {
+        VirgilClient.shared.rotatateUsersPrivateKey(completion: {(result, error) in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            print(result)
+        })
+    }
+    
+    
     
     func encryptMessage (message: String) {
         
@@ -65,20 +83,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let identities = ["User11"]
 
         // Search user's Cards to encrypt for
-        self.eThree!.findUsers(with: identities) { findUsersResult, error in
-            guard let findUsersResult = findUsersResult, error == nil else {
-                // Error handling here
-                print(error?.localizedDescription)
-                return
-            }
-
-            do {
-                 let encryptedMessage = try self.eThree.authEncrypt(text: messageToEncrypt, for: findUsersResult)
-            } catch {
-                print(error.localizedDescription)
-            }
-           
-        }
+//        self.eThree!.findUsers(with: identities) { findUsersResult, error in
+//            guard let findUsersResult = findUsersResult, error == nil else {
+//                // Error handling here
+//                print(error?.localizedDescription)
+//                return
+//            }
+//
+//            do {
+//                 let encryptedMessage = try self.eThree.authEncrypt(text: messageToEncrypt, for: findUsersResult)
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//
+//        }
         
 //        let members = currentChannel?.members
 //        var identities:[String] = []
@@ -127,39 +145,50 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        }
     }
         
-        @IBAction func sendMessage(_ sender: Any) {
-            
-            
-            if messageInputField.text != "" {
-                guard let params = SBDUserMessageParams(message: messageInputField.text!) else {
-                    print("Couldn't create params")
-                    return
-                    
-                }
-                self.encryptMessage(message: messageInputField.text!)
-                //            let message = currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
-                //                guard error == nil else {
-                //                    print(error)
-                //                    return
-                //                }
-                //                if let message = userMessage {
-                //                    DispatchQueue.main.async{
-                //                        self.showToast("Sent successfully")
-                //                        self.parentMessageStore?[0] = message
-                //                        self.messageTableView.reloadData();
-                //                    }
-                //                }
-                //            })
-                //            DispatchQueue.main.async{
-                //                self.showToast("Message sending...")
-                //                self.parentMessageStore?.insert(message, at: 0)
-                //                self.messageTableView.reloadData();
-                //            }
-                //
-                //        }
-                messageInputField.text = ""
+    @IBAction func sendMessage(_ sender: Any) {
+        
+        
+        if messageInputField.text != "" {
+            guard let params = SBDUserMessageParams(message: "Encrypted Message") else {
+                print("Couldn't create params")
+                
+                return
+                
             }
+            let userMessage = self.messageInputField.text!
+            VirgilClient.shared.prepareUser("User11", completion: {() in
+                
+                let eMessage = VirgilClient.shared.encrypt(userMessage, for: "User11")
+                params.data = eMessage
+                params.customType = "ENCRYPTED"
+                DispatchQueue.main.async{
+                    self.showToast("Message Encrypted")
+                }
+                let message = self.currentChannel!.sendUserMessage(with: params, completionHandler: { (userMessage, error) in
+                    guard error == nil else {
+                        print(error)
+                        return
+                    }
+                    if let message = userMessage {
+                        DispatchQueue.main.async{
+                            self.showToast("Sent successfully")
+                            self.parentMessageStore?[0] = message
+                            self.messageTableView.reloadData();
+                        }
+                    }
+                })
+                DispatchQueue.main.async{
+                    self.showToast("Message sending...")
+                    self.parentMessageStore?.insert(message, at: 0)
+                    self.messageTableView.reloadData();
+                }
+            })
+            
+            
         }
+        messageInputField.text = ""
+    }
+
         
         
         

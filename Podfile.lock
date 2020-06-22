@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.2.1)
   - SendBirdSDK (3.0.185)
   - VirgilCrypto (5.5.0):
     - VirgilCryptoFoundation (= 0.15.2)
@@ -32,11 +33,15 @@ PODS:
   - VSCCrypto/Ratchet (0.15.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - SendBirdSDK
+  - VirgilCrypto
   - VirgilE3Kit
+  - VirgilSDK (~> 7.2)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - SendBirdSDK
     - VirgilCrypto
     - VirgilCryptoFoundation
@@ -49,6 +54,7 @@ SPEC REPOS:
     - VSCCrypto
 
 SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   SendBirdSDK: 9726a20819b0e09991571061bf69ebdaaccf8706
   VirgilCrypto: 48116c3abee03662dbae40d0957df5160c2a7128
   VirgilCryptoFoundation: a804f11b826cefed157d7ef3d99f897e811cd971
@@ -60,6 +66,6 @@ SPEC CHECKSUMS:
   VirgilSDKRatchet: d2f820c431cb3fa237351f558f7c0159c1bb0dea
   VSCCrypto: 6cb5595d080b0a343819f44524f41df8587dab6c
 
-PODFILE CHECKSUM: 8bfe2f25e25760fb457fdff41c5e262d5abc6651
+PODFILE CHECKSUM: 7313af7d6cc5ee97f07e280118c6979b887fddf0
 
 COCOAPODS: 1.8.4

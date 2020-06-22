@@ -10,9 +10,12 @@ import Foundation
 import SendBirdSDK
 import VirgilE3Kit
 
+
 extension ChatViewController {
     
-    
+    func initVirgil() {
+        
+    }
     
     func initConnections(){
         SBDMain.connect(withUserId: "Alice", completionHandler: { (user, error) in
@@ -22,29 +25,22 @@ extension ChatViewController {
                 
             }
             self.showToast("Connected to Sendbird")
-            do {
-                let params = try EThreeParams(identity: "Alice", tokenCallback: self.virgil.authWithVirgil)
-                let ethree = try EThree(params: params)
-                
-                ethree.register { error in
-                    guard error == nil else {
-                        // Error handling here
-                        print(error?.localizedDescription) //User is already registered
-                        return
-                    }
-                    print("New Registration")
-                    // User private key loaded, ready to end-to-end encrypt!
+            
+            Account.shared.login("Alice", completion: {(result, error) in
+                guard error == nil else {
+                    print(error?.localizedDescription)
+                    return
                 }
-                
-            } catch {
-                print(error.localizedDescription)
-            }
+                print(result)
+            })
+
             let channelUrl = "virgil_testing"//"sendbird_group_channel_127670705_1807adade5874514d3669a18bcf14efc6db67850"
             SBDGroupChannel.getWithUrl(channelUrl) { (channel, error) in
                 guard error == nil else {
                     self.showToast("Failed to fetch channel: \(String(describing: error?.localizedDescription))")
                     return
                 }
+  
                 self.currentChannel = channel
             }
         })

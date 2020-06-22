@@ -32,9 +32,8 @@ extension ChatViewController {
         
         let currentUserId = SBDMain.getCurrentUser()?.userId
         var cell = UITableViewCell()// messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
-        
+    
         if let message = self.parentMessageStore?[indexPath[1]] {
-            
             if message is SBDUserMessage {
                 var userMessage = SBDUserMessage.init()
                 userMessage.self = message as! SBDUserMessage
