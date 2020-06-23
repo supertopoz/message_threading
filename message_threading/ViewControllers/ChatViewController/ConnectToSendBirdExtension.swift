@@ -40,8 +40,7 @@ extension ChatViewController {
                     self.showToast("Failed to fetch channel: \(String(describing: error?.localizedDescription))")
                     return
                 }
-  
-                self.currentChannel = channel
+            self.currentChannel = channel
             }
         })
     }
