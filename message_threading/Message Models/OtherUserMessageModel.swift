@@ -21,6 +21,10 @@ struct OtherUserCell {
         cell.senderLabel.text = "\( String(messageObj.sender?.nickname ?? ""))"
         cell.messageLabel.text = "\( String(messageObj.message ?? ""))"
         self.cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        if messageObj.customType == "ENCRYPTED" {
+            
+            cell.messageLabel.text = VirgilClient.shared.decrypt(messageObj.data!)
+        }
     }
     func createCell() -> UITableViewCell {
         return self.cell

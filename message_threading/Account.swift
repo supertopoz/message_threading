@@ -16,13 +16,18 @@ class Account {
     var authToken: String? = nil
     var userId: String? = nil
 
-    public func login(_ userId: String, completion: @escaping (String?, Error?) -> Void) {
+    public func login(as userId: String, completion: @escaping (String?, Error?) -> Void) {
         AF
             .request("\(apiRoot)/authenticate",
                      method: .post,
                      parameters: ["identity" : userId],
                      encoder: JSONParameterEncoder.default)
             .responseJSON { response in
+                print("RESPONSE\(response)")
+                guard  response.error == nil else {
+                    completion(nil, response.error)
+                    return
+                }
                 let body = response.value as! NSDictionary
                 let authToken = body["authToken"]! as! String
                 self.authToken = authToken
@@ -37,6 +42,10 @@ class Account {
                       method: .get,
                       headers: ["Authorization" : "Bearer \(authToken!)"])
             .responseJSON { response in
+                guard  response.error == nil else {
+                    completion(nil, response.error)
+                    return
+                }
                 let body = response.value as! NSDictionary
                 let token = body["virgilToken"]! as! String
                 VirgilClient.configure(identity: self.userId!, token: token, completion: {(result, error) in

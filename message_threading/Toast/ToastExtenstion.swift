@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
+var x = 0
 
 class ToastLabel: UILabel {
+    
+    
+    
     var textInsets = UIEdgeInsets.zero {
         didSet { invalidateIntrinsicContentSize() }
     }
@@ -31,9 +35,11 @@ class ToastLabel: UILabel {
 extension UIViewController {
     static let DELAY_SHORT = 1.5
     static let DELAY_LONG = 3.0
-
+    
     func showToast(_ text: String, delay: TimeInterval = DELAY_LONG) {
+   
         let label = ToastLabel()
+        x += 1
         label.backgroundColor = UIColor(white: 0, alpha: 0.5)
         label.textColor = .white
         label.textAlignment = .center
@@ -51,7 +57,7 @@ extension UIViewController {
         label.centerXAnchor.constraint(equalTo: saveArea.centerXAnchor, constant: 0).isActive = true
         label.leadingAnchor.constraint(greaterThanOrEqualTo: saveArea.leadingAnchor, constant: 15).isActive = true
         label.trailingAnchor.constraint(lessThanOrEqualTo: saveArea.trailingAnchor, constant: -15).isActive = true
-        label.bottomAnchor.constraint(equalTo: saveArea.bottomAnchor, constant: -30).isActive = true
+        label.bottomAnchor.constraint(equalTo: saveArea.bottomAnchor, constant: CGFloat(-40 - (x * 50))).isActive = true
 
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
             label.alpha = 1
@@ -59,6 +65,7 @@ extension UIViewController {
             UIView.animate(withDuration: 0.5, delay: delay, options: .curveEaseOut, animations: {
                 label.alpha = 0
             }, completion: {_ in
+                x -= 1
                 label.removeFromSuperview()
             })
         })

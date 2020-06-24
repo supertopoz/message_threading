@@ -23,6 +23,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var otherUsersMessages: UINib!
     var myMessages: UINib!
     var adminMessages: UINib!
+    let loginUserId = "Alice"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,89 +77,43 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    func encryptMessage (message: String) {
-        
-        // prepare a message
-        let messageToEncrypt = "Hello, Alice and Den!"
-        let identities = ["User11"]
+    func getChannelMembers () -> [String] {
 
-        // Search user's Cards to encrypt for
-//        self.eThree!.findUsers(with: identities) { findUsersResult, error in
-//            guard let findUsersResult = findUsersResult, error == nil else {
-//                // Error handling here
-//                print(error?.localizedDescription)
-//                return
-//            }
-//
-//            do {
-//                 let encryptedMessage = try self.eThree.authEncrypt(text: messageToEncrypt, for: findUsersResult)
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//
-//        }
-        
-//        let members = currentChannel?.members
-//        var identities:[String] = []
-//        for member in (members! as NSArray as! [SBDMember]) {
-//            let memberObj: SBDMember
-//            memberObj = member
-//            identities.append(memberObj.userId)
-//        }
-//        do {
-//               let key = try self.virgil.eThree.hasLocalPrivateKey()
-//            print("Found local private Key for current user")
-//        } catch {
-//            print("OOPS! no private key")
-//            return
-//        }
-//        let currentUserID = SBDMain.getCurrentUser()?.userId
-//        let indexOfCurrentUser = identities.firstIndex(of: currentUserID!)!
-//        identities.remove(at: indexOfCurrentUser)
-//        let indexOfDashboardAdmin = identities.firstIndex(of: "9e2c2921-a21a-4c10-91bb-c15cf6da417f")!
-//        identities.remove(at: indexOfDashboardAdmin)
-//        print(identities)
-//        self.virgil.eThree.findUsers(with: identities){ findUsersResult, error in
-//            guard let findUsersResult = findUsersResult, error == nil else {
-//                print("VIGIL ERROR: \(String(describing: error?.localizedDescription))")
-//                return
-//            }
-//            print(findUsersResult)
-//            do {
-//                   let key = try self.virgil.eThree.hasLocalPrivateKey()
-//                print("Found local private Key for current user")
-//            } catch {
-//                print("OOPS! no private key")
-//                return
-//            }
-//            do {
-//                let encryptMessage = try self.virgil.eThree.authEncrypt(text: message, for: findUsersResult)
-//                print(encryptMessage)
-//                DispatchQueue.main.async {
-//                    self.showToast("Messages: \(encryptMessage)")
-//
-//                }
-//            } catch {
-//
-//                print(error.localizedDescription)
-//            }
-//        }
+
+        let members = currentChannel?.members
+        var identities:[String] = []
+        for member in (members! as NSArray as! [SBDMember]) {
+            let memberObj: SBDMember
+            memberObj = member
+            identities.append(memberObj.userId)
+        }
+        let currentUserID = SBDMain.getCurrentUser()?.userId
+        let indexOfCurrentUser = identities.firstIndex(of: currentUserID!)!
+        identities.remove(at: indexOfCurrentUser)
+        return identities
     }
-        
+
+    
     @IBAction func sendMessage(_ sender: Any) {
         
         
         if messageInputField.text != "" {
             guard let params = SBDUserMessageParams(message: "Encrypted Message") else {
                 print("Couldn't create params")
-                
                 return
-                
             }
             let userMessage = self.messageInputField.text!
-            VirgilClient.shared.prepareUser("User11", completion: {() in
-                
-                let eMessage = VirgilClient.shared.encrypt(userMessage, for: "User11")
+
+            VirgilClient.shared.prepareUsers(with: ["User11"], completion: {(error) in
+                guard error == nil else {
+                    if let message = error?.localizedDescription {
+                        DispatchQueue.main.async {
+                            self.showToast(message)
+                        }
+                    }
+                    return
+                }
+                let eMessage = VirgilClient.shared.encrypt(userMessage, for: self.getChannelMembers()[0])
                 params.data = eMessage
                 params.customType = "ENCRYPTED"
                 DispatchQueue.main.async{

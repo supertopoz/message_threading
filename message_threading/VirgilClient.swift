@@ -36,10 +36,18 @@ class VirgilClient {
         shared.eThree = eThree
     }
     
-    public func prepareUser(_ user: String, completion: @escaping () -> Void) {
-        eThree!.findUser(with: user) { [weak self] result, _ in
-            self?.userCards[user] = result!
-            completion()
+    public func prepareUsers(with users: [String], completion: @escaping (Error?) -> Void) {
+        guard self.eThree != nil else  {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No encryption service available"])
+            completion(error)
+            return
+        }
+        eThree!.findUsers(with: users) { [weak self] result, _ in
+       //     print(result)
+            self?.userCards = result!
+            print(self?.userCards)
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No encryption service available"])
+            completion(nil)
         }
     }
     
@@ -65,6 +73,7 @@ class VirgilClient {
     }
     
     public func decrypt(_ text: String) -> String {
+        guard self.eThree != nil else { return "No encryption tools available" }
         do {
             var text = try eThree!.authDecrypt(text: text)
             return text
@@ -74,9 +83,10 @@ class VirgilClient {
     }
     
     public func encrypt(_ text: String, for user: String) -> String {
+         guard self.eThree != nil else { return "No encryption tools available" }
         do {
           var text = try eThree!.authEncrypt(text: text, for: userCards[user]!)
-           return text
+          return text
         } catch {
            return error.localizedDescription
         }

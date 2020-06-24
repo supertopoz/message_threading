@@ -13,12 +13,15 @@ import VirgilE3Kit
 
 extension ChatViewController {
     
+    
+    
+    
     func initVirgil() {
         
     }
     
     func initConnections(){
-        SBDMain.connect(withUserId: "Alice", completionHandler: { (user, error) in
+        SBDMain.connect(withUserId: loginUserId, completionHandler: { (user, error) in
             guard error == nil else {
                 self.showToast("Failed to connect: \(String(describing: error?.localizedDescription))")
                 return
@@ -26,12 +29,19 @@ extension ChatViewController {
             }
             self.showToast("Connected to Sendbird")
             
-            Account.shared.login("Alice", completion: {(result, error) in
+            
+            let sendbirdUserId = SBDMain.getCurrentUser()?.userId
+            Account.shared.login(as: sendbirdUserId!, completion: {(result, error) in
                 guard error == nil else {
-                    print(error?.localizedDescription)
+                    DispatchQueue.main.async {
+                        let errorString = error?.localizedDescription
+                        self.showToast(errorString!)
+                    }
                     return
                 }
-                print(result)
+                DispatchQueue.main.async {
+                    self.showToast(result!)
+                }
             })
 
             let channelUrl = "virgil_testing"//"sendbird_group_channel_127670705_1807adade5874514d3669a18bcf14efc6db67850"
