@@ -12,7 +12,9 @@ import Alamofire
 class Account {
     public static let shared = Account()
 
-    let apiRoot = "http://127.0.0.1:3000"
+  //  let apiRoot = "http://127.0.0.1:3000"
+ //   let apiRoot = "http://jason-F0083-2.local:3000"
+    let apiRoot = "http://192.168.200.173:3000"
     var authToken: String? = nil
     var userId: String? = nil
 

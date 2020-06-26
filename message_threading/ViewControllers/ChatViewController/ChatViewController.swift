@@ -10,7 +10,7 @@ import UIKit
 import SendBirdSDK
 import VirgilE3Kit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SBDChannelDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SBDChannelDelegate, SBDConnectionDelegate {
     
     
     
@@ -24,6 +24,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var myMessages: UINib!
     var adminMessages: UINib!
     let loginUserId = "Alice"
+    var currentUser: SBDUser? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +43,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func getMessages(_ sender: Any) {
+        
+        if let connected = currentUser?.connectionStatus.rawValue {
+            print(connected)
+        }
         let query = currentChannel?.createPreviousMessageListQuery()
         query?.reverse = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
             guard error == nil else {
-                self.showToast("Failed to fetch messages: \(String(describing: error?.localizedDescription))")
+                DispatchQueue.main.async {
+                 self.showToast("Failed to fetch messages: \(String(describing: error?.localizedDescription))")
+                }
+                
                 return
             }
-            self.showToast("Fetched 30 messages")
+            DispatchQueue.main.async {
+                self.showToast("Fetched 30 messages")
+            }
             self.parentMessageStore = messages?.reversed()
             self.messageTableView.reloadData();
         })        
@@ -103,8 +113,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             }
             let userMessage = self.messageInputField.text!
-
-            VirgilClient.shared.prepareUsers(with: ["User11"], completion: {(error) in
+            let channelMembers = getChannelMembers()
+            VirgilClient.shared.prepareUsers(with: channelMembers, completion: {(error) in
                 guard error == nil else {
                     if let message = error?.localizedDescription {
                         DispatchQueue.main.async {

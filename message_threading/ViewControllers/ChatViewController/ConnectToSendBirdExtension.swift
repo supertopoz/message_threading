@@ -23,14 +23,18 @@ extension ChatViewController {
     func initConnections(){
         SBDMain.connect(withUserId: loginUserId, completionHandler: { (user, error) in
             guard error == nil else {
-                self.showToast("Failed to connect: \(String(describing: error?.localizedDescription))")
+                DispatchQueue.main.async {
+                    self.showToast("Failed to connect: \(String(describing: error?.localizedDescription))")
+                }
                 return
                 
             }
-            self.showToast("Connected to Sendbird")
-            
+            DispatchQueue.main.async {
+                self.showToast("Connected to Sendbird")
+            }
             
             let sendbirdUserId = SBDMain.getCurrentUser()?.userId
+            
             Account.shared.login(as: sendbirdUserId!, completion: {(result, error) in
                 guard error == nil else {
                     DispatchQueue.main.async {
@@ -47,7 +51,9 @@ extension ChatViewController {
             let channelUrl = "virgil_testing"//"sendbird_group_channel_127670705_1807adade5874514d3669a18bcf14efc6db67850"
             SBDGroupChannel.getWithUrl(channelUrl) { (channel, error) in
                 guard error == nil else {
-                    self.showToast("Failed to fetch channel: \(String(describing: error?.localizedDescription))")
+                    DispatchQueue.main.async {
+                        self.showToast("Failed to fetch channel: \(String(describing: error?.localizedDescription))")
+                    }
                     return
                 }
             self.currentChannel = channel

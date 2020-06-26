@@ -32,7 +32,6 @@ class VirgilClient {
             }
             completion("Completed registration", nil)
         }
-        
         shared.eThree = eThree
     }
     
@@ -43,52 +42,47 @@ class VirgilClient {
             return
         }
         eThree!.findUsers(with: users) { [weak self] result, _ in
-       //     print(result)
             self?.userCards = result!
-            print(self?.userCards)
-            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No encryption service available"])
             completion(nil)
         }
     }
     
     public func clearUser(completion: @escaping (String?, Error?) -> Void) {
         do {
-             try eThree!.cleanUp()
-             completion("User cleared", nil)
+            try eThree!.cleanUp()
+            completion("User cleared", nil)
         } catch {
             completion(nil, error)
         }
     }
     
     public func rotatateUsersPrivateKey (completion: @escaping (String?, Error?) -> Void) {
-        do {
-            try eThree?.rotatePrivateKey { error in
-                guard error == nil else {
-                    completion(nil, error)
-                    return
-                }
-                completion("Private key removed and re-issued", nil)
+        eThree?.rotatePrivateKey { error in
+            guard error == nil else {
+                completion(nil, error)
+                return
             }
+            completion("Private key removed and re-issued", nil)
         }
     }
     
     public func decrypt(_ text: String) -> String {
         guard self.eThree != nil else { return "No encryption tools available" }
         do {
-            var text = try eThree!.authDecrypt(text: text)
+            let text = try eThree!.authDecrypt(text: text)
             return text
         } catch {
-            return  error.localizedDescription
+            return "Could not decrpyt message: \(error.localizedDescription)"  
         }
     }
     
     public func encrypt(_ text: String, for user: String) -> String {
-         guard self.eThree != nil else { return "No encryption tools available" }
+        guard self.eThree != nil else { return "No encryption tools available" }
         do {
-          var text = try eThree!.authEncrypt(text: text, for: userCards[user]!)
-          return text
+            let text = try eThree!.authEncrypt(text: text, for: userCards[user]!)
+            return text
         } catch {
-           return error.localizedDescription
+            return error.localizedDescription
         }
     }
 }
