@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A9120DC324C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */; };
 		A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */; };
+		A960349224CA2B6600FAAB12 /* OtherUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A960349124CA2B6600FAAB12 /* OtherUsersView.xib */; };
+		A960349424CA2C1300FAAB12 /* OtherUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960349324CA2C1300FAAB12 /* OtherUsersView.swift */; };
 		A9AFCCE0249972F30074D095 /* VirgilClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AFCCDF249972F30074D095 /* VirgilClient.swift */; };
 		A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385002492EDB000EE5865 /* KeyboardExtension.swift */; };
 		A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385042492EF3600EE5865 /* TableViewExtention.swift */; };
@@ -37,6 +39,8 @@
 		36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_message_threading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersChildrenTableViewCell.swift; sourceTree = "<group>"; };
 		A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersChildrenTableViewCell.xib; sourceTree = "<group>"; };
+		A960349124CA2B6600FAAB12 /* OtherUsersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersView.xib; sourceTree = "<group>"; };
+		A960349324CA2C1300FAAB12 /* OtherUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersView.swift; sourceTree = "<group>"; };
 		A9AFCCDF249972F30074D095 /* VirgilClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirgilClient.swift; sourceTree = "<group>"; };
 		A9C385002492EDB000EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		A9C385042492EF3600EE5865 /* TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtention.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				A9D863CE2498303B00A2D58D /* OtherUsersTableViewCell.xib */,
 				A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */,
 				A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */,
+				A960349124CA2B6600FAAB12 /* OtherUsersView.xib */,
+				A960349324CA2C1300FAAB12 /* OtherUsersView.swift */,
 			);
 			path = OtherUsers;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			files = (
 				A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */,
 				A9CE10A42488474000C661B9 /* LaunchScreen.storyboard in Resources */,
+				A960349224CA2B6600FAAB12 /* OtherUsersView.xib in Resources */,
 				A9D863D02498303B00A2D58D /* OtherUsersTableViewCell.xib in Resources */,
 				A9CE10A12488474000C661B9 /* Assets.xcassets in Resources */,
 				A9CE109F2488473E00C661B9 /* Main.storyboard in Resources */,
@@ -315,6 +322,7 @@
 				A9D863D324984F6C00A2D58D /* MyMessagesTableViewCell.swift in Sources */,
 				A9D863D72498752000A2D58D /* AdminMessageTableViewCell.swift in Sources */,
 				A9CE10982488473E00C661B9 /* AppDelegate.swift in Sources */,
+				A960349424CA2C1300FAAB12 /* OtherUsersView.swift in Sources */,
 				A9E4981924A055EE009A3AFA /* Account.swift in Sources */,
 				A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */,
 				A9D863DB2498999900A2D58D /* AdminMessageModel.swift in Sources */,

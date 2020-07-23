@@ -20,6 +20,11 @@ extension ChatViewController {
         
         messageTableView.estimatedRowHeight = 200
         messageTableView.rowHeight = UITableView.automaticDimension
+        
+        messageTableView.sectionHeaderHeight =  UITableView.automaticDimension
+        messageTableView.estimatedSectionHeaderHeight = 200;
+        
+        
         messageTableView.separatorColor = .clear
         messageTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
         messageTableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: messageTableView.bounds.size.width - 8.0)
@@ -32,22 +37,37 @@ extension ChatViewController {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-
-        let label = UILabel()
-        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.text = "Notification Times \(section)"
-        
-        headerView.addSubview(label)
-
-        return headerView
+//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+//        headerView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+//        let label = UILabel()
+//        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+//        label.text = "Message \(section)"
+//
+//
+//        headerView.addSubview(label)
+        let headerView = OtherUsersView()
+        headerView.message.text = "Message \(section)"
+        headerView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+        if(section > 0 ){
+            return headerView
+        } else {
+            let view = UIView()
+            return view
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section > 0 {
+            return UITableView.automaticDimension
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parentMessageStore?.count ?? 2
+        return section + 1 * 2//parentMessageStore?.count ?? 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         print("Working")
         let currentUserId = SBDMain.getCurrentUser()?.userId
         var cell = UITableViewCell()// messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
     
