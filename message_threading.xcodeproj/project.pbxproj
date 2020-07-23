@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9120DC324C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */; };
+		A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */; };
 		A9AFCCE0249972F30074D095 /* VirgilClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AFCCDF249972F30074D095 /* VirgilClient.swift */; };
 		A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385002492EDB000EE5865 /* KeyboardExtension.swift */; };
 		A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385042492EF3600EE5865 /* TableViewExtention.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		36A5852346CCC1F552EAA715 /* Pods_message_threading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_message_threading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersChildrenTableViewCell.swift; sourceTree = "<group>"; };
+		A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersChildrenTableViewCell.xib; sourceTree = "<group>"; };
 		A9AFCCDF249972F30074D095 /* VirgilClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirgilClient.swift; sourceTree = "<group>"; };
 		A9C385002492EDB000EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		A9C385042492EF3600EE5865 /* TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtention.swift; sourceTree = "<group>"; };
@@ -89,11 +93,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A9AFCCDE249970820074D095 /* MessageCells */ = {
+		A9120DC524C9436C004A8E9A /* OtherUsers */ = {
 			isa = PBXGroup;
 			children = (
 				A9D863CD2498303B00A2D58D /* OtherUsersTableViewCell.swift */,
 				A9D863CE2498303B00A2D58D /* OtherUsersTableViewCell.xib */,
+				A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */,
+				A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */,
+			);
+			path = OtherUsers;
+			sourceTree = "<group>";
+		};
+		A9AFCCDE249970820074D095 /* MessageCells */ = {
+			isa = PBXGroup;
+			children = (
+				A9120DC524C9436C004A8E9A /* OtherUsers */,
 				A9D863D124984F6C00A2D58D /* MyMessagesTableViewCell.swift */,
 				A9D863D224984F6C00A2D58D /* MyMessagesTableViewCell.xib */,
 				A9D863D52498752000A2D58D /* AdminMessageTableViewCell.swift */,
@@ -236,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */,
 				A9CE10A42488474000C661B9 /* LaunchScreen.storyboard in Resources */,
 				A9D863D02498303B00A2D58D /* OtherUsersTableViewCell.xib in Resources */,
 				A9CE10A12488474000C661B9 /* Assets.xcassets in Resources */,
@@ -294,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9120DC324C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift in Sources */,
 				A9CE109C2488473E00C661B9 /* ChatViewController.swift in Sources */,
 				A9D863DD24989FBA00A2D58D /* OtherUserMessageModel.swift in Sources */,
 				A9D863D324984F6C00A2D58D /* MyMessagesTableViewCell.swift in Sources */,

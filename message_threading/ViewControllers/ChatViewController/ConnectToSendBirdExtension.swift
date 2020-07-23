@@ -26,6 +26,7 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     self.showToast("Failed to connect: \(String(describing: error?.localizedDescription))")
                 }
+
                 return
                 
             }

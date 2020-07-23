@@ -154,7 +154,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageInputField.text = ""
     }
 
-        
+    
         
         
         func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
