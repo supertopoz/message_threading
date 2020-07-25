@@ -17,6 +17,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //  @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var messageTableView: UITableView!
+    
     var currentChannel: SBDGroupChannel? = nil
     var parentMessageStore: [SBDBaseMessage]? = []
     @IBOutlet weak var messageInputField: UITextField!
@@ -27,6 +28,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentUser: SBDUser? = nil
     
     override func viewDidLoad() {
+        
+        //tableView = UITableView(frame: .zero, style: .grouped)
         super.viewDidLoad()
         SBDMain.add(self as SBDChannelDelegate, identifier: "1")
         initConnections()
@@ -35,9 +38,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         adminMessages = UINib(nibName: "AdminMessageTableViewCell", bundle: nil)
         let messageCells = (otherUsersMessages: otherUsersMessages!, myMessages: myMessages!, adminMessages: adminMessages!)
         initTableView(messageCells: messageCells)
-        
-        
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
         initKeyboardAdjustments(tap: tap)
     }
