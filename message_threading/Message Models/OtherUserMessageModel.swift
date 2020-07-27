@@ -32,21 +32,23 @@ struct OtherUserCell {
 }
 
 struct OtherUserParentMessage {
-    let messageId: Int64
     let otherUserMessage: SBDUserMessage
     let messageBubble: OtherUsersParentMessageView
     init(messageObj: SBDUserMessage, messageBubble: OtherUsersParentMessageView, numberOfReplies: Int) {
-        self.messageId = messageObj.messageId
         self.otherUserMessage = SBDUserMessage.init()
         self.messageBubble = messageBubble
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm:ss"
         if(numberOfReplies == 0){
-        //    self.messageBubble.restrictedWidthHolderView.backgroundColor = .white
+          self.messageBubble.restrictedWidthHolderView.backgroundColor = .white
         }
-        messageBubble.sentTimestampLabel.text = formatter.string(from: Date(timeIntervalSince1970: TimeInterval(messageObj.createdAt/1000)))
+        let timestamp = GetMessageTimestamp(from: messageObj.createdAt)
+        
+        messageBubble.sentTimestampLabel.text = timestamp.showTime()
         messageBubble.message.text = "\( String(messageObj.message ?? ""))"
-        messageBubble.senderNicknameLabel.text = messageObj.sender?.nickname as! String
+        if let nickname = messageObj.sender?.nickname {
+             messageBubble.senderNicknameLabel.text = nickname
+        } else {
+            messageBubble.senderNicknameLabel.text = ""
+        }
         messageBubble.roundCorners(view: messageBubble.repliedMessageContainerView, corners: [.topLeft, .topRight], radius: 10)
         messageBubble.messageBackgroundView.layer.cornerRadius = 10
         messageBubble.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))

@@ -10,9 +10,11 @@
 		A9120DC324C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */; };
 		A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */; };
 		A930C89B24CAAA6500268771 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930C89A24CAAA6500268771 /* Tools.swift */; };
-		A960349224CA2B6600FAAB12 /* OtherUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A960349124CA2B6600FAAB12 /* OtherUsersView.xib */; };
+		A960349224CA2B6600FAAB12 /* OtherUsersParentMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A960349124CA2B6600FAAB12 /* OtherUsersParentMessageView.xib */; };
 		A960349424CA2C1300FAAB12 /* OtherUsersParentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960349324CA2C1300FAAB12 /* OtherUsersParentMessageView.swift */; };
 		A9AFCCE0249972F30074D095 /* VirgilClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AFCCDF249972F30074D095 /* VirgilClient.swift */; };
+		A9BA3AC624CF6BF400E738BA /* AdminMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BA3AC524CF6BF400E738BA /* AdminMessageView.xib */; };
+		A9BA3AC824CF6C9B00E738BA /* AdminMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA3AC724CF6C9B00E738BA /* AdminMessageView.swift */; };
 		A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385002492EDB000EE5865 /* KeyboardExtension.swift */; };
 		A9C385052492EF3600EE5865 /* TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385042492EF3600EE5865 /* TableViewExtention.swift */; };
 		A9C385072492EFA400EE5865 /* ConnectToSendBirdExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */; };
@@ -41,9 +43,11 @@
 		A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersChildrenTableViewCell.swift; sourceTree = "<group>"; };
 		A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersChildrenTableViewCell.xib; sourceTree = "<group>"; };
 		A930C89A24CAAA6500268771 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		A960349124CA2B6600FAAB12 /* OtherUsersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersView.xib; sourceTree = "<group>"; };
+		A960349124CA2B6600FAAB12 /* OtherUsersParentMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherUsersParentMessageView.xib; sourceTree = "<group>"; };
 		A960349324CA2C1300FAAB12 /* OtherUsersParentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersParentMessageView.swift; sourceTree = "<group>"; };
 		A9AFCCDF249972F30074D095 /* VirgilClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirgilClient.swift; sourceTree = "<group>"; };
+		A9BA3AC524CF6BF400E738BA /* AdminMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminMessageView.xib; sourceTree = "<group>"; };
+		A9BA3AC724CF6C9B00E738BA /* AdminMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageView.swift; sourceTree = "<group>"; };
 		A9C385002492EDB000EE5865 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		A9C385042492EF3600EE5865 /* TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtention.swift; sourceTree = "<group>"; };
 		A9C385062492EFA400EE5865 /* ConnectToSendBirdExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToSendBirdExtension.swift; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 				A9D863CD2498303B00A2D58D /* OtherUsersTableViewCell.swift */,
 				A9120DC124C94363004A8E9A /* OtherUsersChildrenTableViewCell.swift */,
 				A9120DC224C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib */,
-				A960349124CA2B6600FAAB12 /* OtherUsersView.xib */,
+				A960349124CA2B6600FAAB12 /* OtherUsersParentMessageView.xib */,
 				A960349324CA2C1300FAAB12 /* OtherUsersParentMessageView.swift */,
 			);
 			path = OtherUsers;
@@ -128,6 +132,8 @@
 				A9D863D224984F6C00A2D58D /* MyMessagesTableViewCell.xib */,
 				A9D863D52498752000A2D58D /* AdminMessageTableViewCell.swift */,
 				A9D863D62498752000A2D58D /* AdminMessageTableViewCell.xib */,
+				A9BA3AC524CF6BF400E738BA /* AdminMessageView.xib */,
+				A9BA3AC724CF6C9B00E738BA /* AdminMessageView.swift */,
 			);
 			path = MessageCells;
 			sourceTree = "<group>";
@@ -269,12 +275,13 @@
 			files = (
 				A9120DC424C94363004A8E9A /* OtherUsersChildrenTableViewCell.xib in Resources */,
 				A9CE10A42488474000C661B9 /* LaunchScreen.storyboard in Resources */,
-				A960349224CA2B6600FAAB12 /* OtherUsersView.xib in Resources */,
+				A960349224CA2B6600FAAB12 /* OtherUsersParentMessageView.xib in Resources */,
 				A9D863D02498303B00A2D58D /* OtherUsersTableViewCell.xib in Resources */,
 				A9CE10A12488474000C661B9 /* Assets.xcassets in Resources */,
 				A9CE109F2488473E00C661B9 /* Main.storyboard in Resources */,
 				A9D863D424984F6C00A2D58D /* MyMessagesTableViewCell.xib in Resources */,
 				A9D863D82498752000A2D58D /* AdminMessageTableViewCell.xib in Resources */,
+				A9BA3AC624CF6BF400E738BA /* AdminMessageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +351,7 @@
 				A9D863E22498A85D00A2D58D /* ToastExtenstion.swift in Sources */,
 				A9C385012492EDB000EE5865 /* KeyboardExtension.swift in Sources */,
 				A9AFCCE0249972F30074D095 /* VirgilClient.swift in Sources */,
+				A9BA3AC824CF6C9B00E738BA /* AdminMessageView.swift in Sources */,
 				A9D863DF2498A2A600A2D58D /* MyMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,7 +36,6 @@ class OtherUsersParentMessageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         commonInit()
     }
     
@@ -46,7 +45,7 @@ class OtherUsersParentMessageView: UIView {
     }
     
     private func commonInit(){
-        Bundle.main.loadNibNamed("OtherUsersView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("OtherUsersParentMessageView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

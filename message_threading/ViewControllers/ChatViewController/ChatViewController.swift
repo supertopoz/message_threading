@@ -49,6 +49,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         let query = currentChannel?.createPreviousMessageListQuery()
         query?.reverse = true
+        query?.includeThreadInfo = true
+        query?.includeReplies = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
             guard error == nil else {
                 DispatchQueue.main.async {
@@ -60,6 +62,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.showToast("Fetched 30 messages")
             }
+            
+            // if the message is a parent put in in the store.
+            // if the message is not a parent???
+            // Should use a dictionary for this. 
             self.parentMessageStore = messages?.reversed()
             self.messageTableView.reloadData();
         })        

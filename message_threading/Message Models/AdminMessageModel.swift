@@ -10,18 +10,16 @@ import Foundation
 import SendBirdSDK
 import UIKit
 
-struct AdminMessageCell  {
-    let messageId: Int64
+struct AdminMessageBubble  {
     let adminMessage: SBDAdminMessage
-    let cell: AdminMessageTableViewCell
-    init(messageObj: SBDAdminMessage, table: UITableView) {
-        self.messageId = messageObj.messageId
+    let view: AdminMessageView
+    init(messageObj: SBDAdminMessage, messageBubble: AdminMessageView) {
         self.adminMessage = SBDAdminMessage.init()
-        self.cell = table.dequeueReusableCell(withIdentifier: "AdminMessages")! as! AdminMessageTableViewCell
-        self.cell.adminMessageLabel.text = messageObj.message
-        self.cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        self.view = messageBubble
+        self.view.adminMessageLabel.text = messageObj.message
+        self.view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     }
-    func createCell() -> UITableViewCell {
-        return self.cell
+    func createView() -> UIView {
+        return self.view
     }
 }
