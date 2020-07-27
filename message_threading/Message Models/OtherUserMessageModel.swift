@@ -30,3 +30,31 @@ struct OtherUserCell {
         return self.cell
     }
 }
+
+struct OtherUserParentMessage {
+    let messageId: Int64
+    let otherUserMessage: SBDUserMessage
+    let messageBubble: OtherUsersParentMessageView
+    init(messageObj: SBDUserMessage, messageBubble: OtherUsersParentMessageView, numberOfReplies: Int) {
+        self.messageId = messageObj.messageId
+        self.otherUserMessage = SBDUserMessage.init()
+        self.messageBubble = messageBubble
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm:ss"
+        if(numberOfReplies == 0){
+        //    self.messageBubble.restrictedWidthHolderView.backgroundColor = .white
+        }
+        messageBubble.sentTimestampLabel.text = formatter.string(from: Date(timeIntervalSince1970: TimeInterval(messageObj.createdAt/1000)))
+        messageBubble.message.text = "\( String(messageObj.message ?? ""))"
+        messageBubble.senderNicknameLabel.text = messageObj.sender?.nickname as! String
+        messageBubble.roundCorners(view: messageBubble.repliedMessageContainerView, corners: [.topLeft, .topRight], radius: 10)
+        messageBubble.messageBackgroundView.layer.cornerRadius = 10
+        messageBubble.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+        if messageObj.customType == "ENCRYPTED" {
+            messageBubble.message.text = VirgilClient.shared.decrypt(messageObj.data!)
+        }
+    }
+    func createView() -> UIView {
+        return self.messageBubble
+    }
+}

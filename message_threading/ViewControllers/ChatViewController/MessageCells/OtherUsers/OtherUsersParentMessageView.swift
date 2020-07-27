@@ -8,14 +8,18 @@
 
 import UIKit
 
-class OtherUsersView: UIView {
+class OtherUsersParentMessageView: UIView {
 
     @IBOutlet var contentView: UIView!
-
+    @IBOutlet weak var senderNicknameLabel: UILabel!
+    
     @IBOutlet weak var messageHolderView: UIView!
     @IBOutlet weak var message: UILabel!
     
+    @IBOutlet weak var sentTimestampLabel: UILabel!
     @IBOutlet weak var repliedMessageContainerView: UIView!
+    @IBOutlet weak var messageBackgroundView: UIView!
+    @IBOutlet weak var restrictedWidthHolderView: UIView!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -26,6 +30,7 @@ class OtherUsersView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.messageHolderView.layer.cornerRadius = 10
+        self.messageBackgroundView.layer.cornerRadius = 10
     }
     
     

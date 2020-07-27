@@ -24,12 +24,9 @@ extension ChatViewController {
         messageTableView.sectionHeaderHeight =  UITableView.automaticDimension
         messageTableView.estimatedSectionHeaderHeight = 200;
         
-        
         messageTableView.separatorColor = .clear
         messageTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
         messageTableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: messageTableView.bounds.size.width - 8.0)
-        
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,23 +34,28 @@ extension ChatViewController {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-//        headerView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
-//        let label = UILabel()
-//        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-//        label.text = "Message \(section)"
-//
-//
-//        headerView.addSubview(label)
-        let headerView = OtherUsersView()
-        headerView.message.text = "Message efefefefefe efefefef efefefefef efefefefef efefefef efefefefefe \(section)"
-    //    headerView.contentView.layer.cornerRadius = 10
-        headerView.messageHolderView.layer.cornerRadius = 10
-        headerView.roundCorners(view: headerView.repliedMessageContainerView, corners: [.topLeft, .topRight], radius: 10)
-        
-       // self.roundCorners(view: headerView.repliedMessageContainerView, corners: [.topLeft, .topRight], radius: 10)
-        
-        headerView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+        let currentUserId = SBDMain.getCurrentUser()?.userId
+        let headerView = OtherUsersParentMessageView()
+
+        if let message = self.parentMessageStore?[section] {
+            let replyCount = message.threadInfo.replyCount
+           if message is SBDUserMessage {
+               var userMessage = SBDUserMessage.init()
+               userMessage.self = message as! SBDUserMessage
+               let senderId = userMessage.sender?.userId
+               if senderId == currentUserId {
+                let otherUserParentMessage = OtherUserParentMessage(messageObj: message as! SBDUserMessage, messageBubble: headerView, numberOfReplies: replyCount)
+                return otherUserParentMessage.createView()
+               } else {
+                let otherUserParentMessage = OtherUserParentMessage(messageObj: message as! SBDUserMessage, messageBubble: headerView, numberOfReplies: replyCount )
+                return otherUserParentMessage.createView()
+               }
+           }
+//           if message is SBDAdminMessage {
+//               let adminMessageCell = AdminMessageCell(messageObj: message as! SBDAdminMessage, table: messageTableView)
+//               return adminMessageCell.createCell()
+//           }
+       }
         if(section > 0 ){
             return headerView
         } else {
@@ -71,27 +73,32 @@ extension ChatViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section + 1 * 2//parentMessageStore?.count ?? 2
+        return 0// section + 1 * 2//parentMessageStore?.count ?? 2
     }
+    
+    func createMessageObject(){
+        
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentUserId = SBDMain.getCurrentUser()?.userId
         var cell = UITableViewCell()// messageTableView.dequeueReusableCell(withIdentifier: "OtherUsersMessages")! as! OtherUsersTableViewCell
-    
-
-        
         if let message = self.parentMessageStore?[indexPath[1]] {
-            if message is SBDUserMessage {
-                var userMessage = SBDUserMessage.init()
-                userMessage.self = message as! SBDUserMessage
-                let senderId = userMessage.sender?.userId
-                if senderId == currentUserId {
-                    let myMessageCell = MyMessageCell(messageObj: message as! SBDUserMessage, table: messageTableView)
-                    return myMessageCell.createCell()
-                } else {
-                    let otherUserMessage = OtherUserCell(messageObj: message as! SBDUserMessage, table: messageTableView)
-                    return otherUserMessage.createCell()
-                }
-            }
+//            if message is SBDUserMessage {
+//                var userMessage = SBDUserMessage.init()
+//                userMessage.self = message as! SBDUserMessage
+//                let senderId = userMessage.sender?.userId
+//                if senderId == currentUserId {
+//                    let myMessageCell = MyMessageCell(messageObj: message as! SBDUserMessage, table: messageTableView)
+//                    return myMessageCell.createCell()
+//                } else {
+//                    let otherUserMessage = OtherUserCell(messageObj: message as! SBDUserMessage, table: messageTableView)
+//                    return otherUserMessage.createCell()
+//                }
+//            }
 
             if message is SBDAdminMessage {
                 let adminMessageCell = AdminMessageCell(messageObj: message as! SBDAdminMessage, table: messageTableView)
