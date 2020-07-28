@@ -19,7 +19,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageTableView: UITableView!
     
     var currentChannel: SBDGroupChannel? = nil
-    var parentMessageStore: [SBDBaseMessage]? = []
+   // let dic = [ String(): ["parent": SBDBaseMessage(), "replies": [SBDBaseMessage()]]] as [String : Any]
+    var parentMessageStore = [ String(): ["parent": SBDBaseMessage(), "replies": [SBDBaseMessage()]]] as [String : Any]
     @IBOutlet weak var messageInputField: UITextField!
     var otherUsersMessages: UINib!
     var myMessages: UINib!
@@ -50,7 +51,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = currentChannel?.createPreviousMessageListQuery()
         query?.reverse = true
         query?.includeThreadInfo = true
-        query?.includeReplies = true
         query?.loadPreviousMessages(withLimit: 30, reverse: false, completionHandler: { (messages, error) in
             guard error == nil else {
                 DispatchQueue.main.async {
@@ -63,10 +63,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.showToast("Fetched 30 messages")
             }
             
-            // if the message is a parent put in in the store.
+            // if the message is a parent put in in the store, and mark it as a parent.
+            // Fetch it's children.
             // if the message is not a parent???
             // Should use a dictionary for this. 
-            self.parentMessageStore = messages?.reversed()
+            let messageList = messages?.reversed()
+            messageList.map {
+                print($0)
+            }
             self.messageTableView.reloadData();
         })        
     }

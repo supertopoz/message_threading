@@ -36,16 +36,27 @@ struct OtherUserParentMessage {
     let messageBubble: OtherUsersParentMessageView
     init(messageObj: SBDUserMessage, messageBubble: OtherUsersParentMessageView, numberOfReplies: Int) {
         self.otherUserMessage = SBDUserMessage.init()
+        
         self.messageBubble = messageBubble
         if(numberOfReplies == 0){
-          self.messageBubble.restrictedWidthHolderView.backgroundColor = .white
+            self.messageBubble.restrictedWidthHolderView.backgroundColor = .white
+            self.messageBubble.repliesCountLabel.text = ""
+        } else {
+            //Fetch the replies.... ??? and push them meesage view.
+            if numberOfReplies == 1 {
+                self.messageBubble.repliesCountLabel.text = "Has 1 reply"
+            } else {
+                self.messageBubble.repliesCountLabel.text = "Has \(String(numberOfReplies)) replies"
+            }
+            
         }
         let timestamp = GetMessageTimestamp(from: messageObj.createdAt)
+        print("\(messageObj.messageId) : \(messageObj.message)")
         
         messageBubble.sentTimestampLabel.text = timestamp.showTime()
         messageBubble.message.text = "\( String(messageObj.message ?? ""))"
         if let nickname = messageObj.sender?.nickname {
-             messageBubble.senderNicknameLabel.text = nickname
+            messageBubble.senderNicknameLabel.text = nickname
         } else {
             messageBubble.senderNicknameLabel.text = ""
         }

@@ -14,6 +14,7 @@
                 <outlet property="messageBackgroundView" destination="YEv-dD-Nqp" id="smY-Cw-ALn"/>
                 <outlet property="messageHolderView" destination="YD5-Bo-5to" id="FUd-nZ-ZRa"/>
                 <outlet property="repliedMessageContainerView" destination="TZb-nU-Eem" id="7Oc-et-dIT"/>
+                <outlet property="repliesCountLabel" destination="9aJ-6U-B1r" id="k3E-Vy-PJB"/>
                 <outlet property="restrictedWidthHolderView" destination="TZb-nU-Eem" id="CWW-kd-R52"/>
                 <outlet property="senderNicknameLabel" destination="gw6-IE-30Z" id="h9R-dr-hsI"/>
                 <outlet property="sentTimestampLabel" destination="EP2-99-A7D" id="2aY-wg-PGq"/>
@@ -90,12 +91,24 @@
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="235" id="vtZ-yt-FNx"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aJ-6U-B1r">
+                                    <rect key="frame" x="186" y="8" width="76" height="10"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="10" id="Z1z-st-uBv"/>
+                                        <constraint firstAttribute="width" constant="76" id="gya-5t-HUh"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.88460028170000005" green="0.86054432390000002" blue="0.85945492980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
+                                <constraint firstItem="9aJ-6U-B1r" firstAttribute="top" secondItem="TZb-nU-Eem" secondAttribute="top" constant="8" id="3qi-ZM-Juj"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YD5-Bo-5to" secondAttribute="trailing" constant="8" id="5ck-0m-A5I"/>
                                 <constraint firstAttribute="bottom" secondItem="YD5-Bo-5to" secondAttribute="bottom" constant="8" id="DXt-lQ-Hsx"/>
                                 <constraint firstItem="gw6-IE-30Z" firstAttribute="top" secondItem="TZb-nU-Eem" secondAttribute="top" constant="8" id="R1q-4P-HWG"/>
+                                <constraint firstAttribute="trailing" secondItem="9aJ-6U-B1r" secondAttribute="trailing" constant="8" id="eKH-eK-EkP"/>
                                 <constraint firstAttribute="trailing" secondItem="gw6-IE-30Z" secondAttribute="trailing" constant="8" id="fim-AW-uhh"/>
                                 <constraint firstItem="gw6-IE-30Z" firstAttribute="leading" secondItem="TZb-nU-Eem" secondAttribute="leading" constant="8" id="hum-ZS-3G8"/>
                                 <constraint firstItem="YD5-Bo-5to" firstAttribute="top" secondItem="gw6-IE-30Z" secondAttribute="bottom" constant="8" id="pvV-ny-C9o"/>

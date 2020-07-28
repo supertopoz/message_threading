@@ -15,6 +15,7 @@ class OtherUsersParentMessageView: UIView {
     
     @IBOutlet weak var messageHolderView: UIView!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var repliesCountLabel: UILabel!
     
     @IBOutlet weak var sentTimestampLabel: UILabel!
     @IBOutlet weak var repliedMessageContainerView: UIView!
