@@ -18,11 +18,11 @@ extension ChatViewController {
         messageTableView.register(messageCells.myMessages, forCellReuseIdentifier: "MyMessages")
         messageTableView.register(messageCells.adminMessages, forCellReuseIdentifier: "AdminMessages")
         
-        messageTableView.estimatedRowHeight = 200
+        messageTableView.estimatedRowHeight = 150
         messageTableView.rowHeight = UITableView.automaticDimension
         
         messageTableView.sectionHeaderHeight =  UITableView.automaticDimension
-        messageTableView.estimatedSectionHeaderHeight = 200;
+        messageTableView.estimatedSectionHeaderHeight = 150;
         
         messageTableView.separatorColor = .clear
         messageTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
@@ -35,11 +35,9 @@ extension ChatViewController {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let currentUserId = SBDMain.getCurrentUser()?.userId
-        let headerView = OtherUsersParentMessageView()
-
-        
+        let headerView = OtherUsersReplyMessageView()
         if let message = self.parentMessageStore?[section - 1] {
-            let replyCount = message.threadInfo.replyCount
+            let isReply = message.parentMessageId
             if message is SBDUserMessage {
                 var userMessage = SBDUserMessage.init()
                 userMessage.self = message as! SBDUserMessage
@@ -48,7 +46,7 @@ extension ChatViewController {
 //                    let otherUserParentMessage = OtherUserParentMessage(messageObj: message as! SBDUserMessage, messageBubble: headerView, numberOfReplies: replyCount)
 //                    return otherUserParentMessage.createView()
                 } else {
-                    let otherUserParentMessage = OtherUserParentMessage(messageObj: message as! SBDUserMessage, messageBubble: headerView, numberOfReplies: replyCount )
+                    let otherUserParentMessage = OtherUserParentMessage(messageObj: message as! SBDUserMessage, messageBubble: headerView, isReply: isReply )
                     return otherUserParentMessage.createView()
                 }
             }

@@ -8,14 +8,13 @@
 
 import UIKit
 
-class OtherUsersParentMessageView: UIView {
+class OtherUsersReplyMessageView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var senderNicknameLabel: UILabel!
     
     @IBOutlet weak var messageHolderView: UIView!
     @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var repliesCountLabel: UILabel!
+  
     
     @IBOutlet weak var sentTimestampLabel: UILabel!
     @IBOutlet weak var repliedMessageContainerView: UIView!
@@ -46,7 +45,7 @@ class OtherUsersParentMessageView: UIView {
     }
     
     private func commonInit(){
-        Bundle.main.loadNibNamed("OtherUsersParentMessageView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("OtherUsersReplyMessageView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
