@@ -20,7 +20,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var currentChannel: SBDGroupChannel? = nil
    // let dic = [ String(): ["parent": SBDBaseMessage(), "replies": [SBDBaseMessage()]]] as [String : Any]
-    var newParentMessageStore = [ String(): ["parent": SBDBaseMessage(), "replies": [SBDBaseMessage()]]] //as [String : Any]
     var parentMessageStore: [SBDBaseMessage]? = []
     @IBOutlet weak var messageInputField: UITextField!
     var otherUsersMessages: UINib!
@@ -64,28 +63,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.showToast("Fetched 30 messages")
             }
-            
-            // if the message is a parent put in in the store, and mark it as a parent.
-            // Fetch it's children.
-            // if the message is not a parent???
-            // Should use a dictionary for this.
             self.parentMessageStore = messages?.reversed()
-            let messageList = messages?.reversed()
-            messageList?.forEach({ (message) in
-                let msg: SBDBaseMessage = message
-                // has children
-                let messageId = String(msg.messageId)
-//                print("Thread Info: \(msg.threadInfo.replyCount)")
-//                print("Parent message id: \(msg.parentMessageId)")
-                if msg.parentMessageId == 0 {
-                    self.newParentMessageStore[messageId] = ["parent": msg, "replies": [nil]] as [String : Any]
-                }
-                if (self.newParentMessageStore[String(msg.parentMessageId)] != nil) {
-                    self.newParentMessageStore[String(msg.parentMessageId)]!["replies"].append(msg)
-                }
-                
-            })
-            print(self.newParentMessageStore)
             self.messageTableView.reloadData();
         })        
     }
